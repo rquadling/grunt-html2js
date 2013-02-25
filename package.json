@@ -1,0 +1,42 @@
+{
+  "name": "grunt-html2js",
+  "description": "Compiles AngularJS templates to JavaScript",
+  "version": "0.1.0",
+  "homepage": "https://github.com/karlgoldstein/grunt-html2js",
+  "author": {
+    "name": "Karl Goldstein",
+    "email": "karl.goldstein@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/karlgoldstein/grunt-html2js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/karlgoldstein/grunt-html2js/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/karlgoldstein/grunt-html2js/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "Gruntfile.js",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.1.1",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-nodeunit": "~0.1.2",
+    "grunt": "~0.4.0"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.0"
+  },
+  "keywords": [
+    "gruntplugin"
+  ]
+}
