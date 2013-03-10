@@ -69,19 +69,12 @@ module.exports = function(grunt) {
 
       }).join(grunt.util.normalizelf('\n'));
 
-      if (moduleNames.length) {
+      var target = f.module || options.module;
 
-        var target = f.module || options.module;
-
-        var bundle = "angular.module('" + target + "', [" + 
-        moduleNames.join(', ') + "]);\n\n" + modules;
-        grunt.file.write(f.dest, bundle);
-        grunt.log.writeln('File "' + f.dest + '" created.');
-
-      } else {
-
-        grunt.log.warn('No source templates found, not creating ' + f.dest);
-      }
+      var bundle = "angular.module('" + target + "', [" + 
+      moduleNames.join(', ') + "]);\n\n" + modules;
+      grunt.file.write(f.dest, bundle);
+      grunt.log.writeln('File "' + f.dest + '" created.');
     });
   });
 };
