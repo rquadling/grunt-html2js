@@ -85,3 +85,5 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 ## Release History
 
 0.1.1 Build module even if templates do not exist yet
+
+0.1.2 Preserve line feeds in templates to avoid breaking &lt;pre>-formatted text

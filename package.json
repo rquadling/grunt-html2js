@@ -1,7 +1,7 @@
 {
   "name": "grunt-html2js",
   "description": "Compiles AngularJS templates to JavaScript",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "https://github.com/karlgoldstein/grunt-html2js",
   "author": {
     "name": "Karl Goldstein",
