@@ -90,6 +90,10 @@ module.exports = function(grunt) {
     }
   ]
       },
+      multi_lines: {
+	src: ['test/fixtures/three.tpl.html'],
+	dest: 'tmp/multi_lines.js'
+      },
     },
 
     // Unit tests.

@@ -13,7 +13,7 @@ module.exports = function(grunt) {
   var path = require('path');
 
   var escapeContent = function(content) {
-    return content.replace(/"/g, '\\"').replace(/\r?\n/g, '" +\n    "');
+    return content.replace(/"/g, '\\"').replace(/\r?\n/g, '\\n" +\n    "');
   };
 
   // convert Windows file separator URL path separator

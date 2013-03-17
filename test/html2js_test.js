@@ -110,5 +110,15 @@ exports.html2js = {
           'expected compiled template module');
 
     test.done();
+  },
+  multi_lines: function(test) {
+
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/multi_lines.js',
+          'test/expected/multi_lines.js',
+          'expected compiled template module');
+
+    test.done();
   }
 };
