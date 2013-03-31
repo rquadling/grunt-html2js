@@ -75,6 +75,8 @@ Default value: `templates-TARGET`
 
 The name of the parent Angular module for each set of templates.  Defaults to the task target prefixed by `templates-`.
 
+If no bundle module is desired, set this to false.
+
 ### Usage Examples
 
 See the `Gruntfile.js` in the project source code for various configuration examples.
