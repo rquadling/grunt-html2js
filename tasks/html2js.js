@@ -69,12 +69,17 @@ module.exports = function(grunt) {
 
       }).join(grunt.util.normalizelf('\n'));
 
-      var target = f.module || options.module;
-
-      var bundle = "angular.module('" + target + "', [" + 
-      moduleNames.join(', ') + "]);\n\n" + modules;
-      grunt.file.write(f.dest, bundle);
-      grunt.log.writeln('File "' + f.dest + '" created.');
+      var bundle = "";
+      var targetModule = f.module || options.module;
+      //Allow a 'no targetModule if module is null' option
+      if (targetModule) {
+        bundle = "angular.module('" + targetModule + "', [" + 
+          moduleNames.join(', ') + "]);\n\n";
+      }
+      grunt.file.write(f.dest, bundle + modules);
     });
+    //Just have one output, so if we making thirty files it only does one line
+    grunt.log.writeln("Successfully converted "+(""+this.files.length).green +
+                      " html templates to js.");
   });
 };
