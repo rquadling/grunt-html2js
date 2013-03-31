@@ -89,3 +89,5 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 0.1.1 Build module even if templates do not exist yet
 
 0.1.2 Preserve line feeds in templates to avoid breaking &lt;pre>-formatted text
+
+0.1.3 Add option to set the `module` option to null to disable creation of bundle module
