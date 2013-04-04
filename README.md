@@ -61,6 +61,10 @@ angular.module('main', ['templates-main'])
 Note that you should use relative paths to specify the template URL, to
 match the keys by which the template source is cached.
 
+### Gotchas
+
+The `dest` property must be a string.  If it is an array, Grunt will fail when attempting to write the bundle file.
+
 ### Options
 
 #### options.base

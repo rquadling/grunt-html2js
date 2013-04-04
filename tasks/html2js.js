@@ -58,6 +58,8 @@ module.exports = function(grunt) {
     // generate a separate module
     this.files.forEach(function(f) {
 
+      // f.dest must be a string or write will fail
+
       var moduleNames = [];
 
       var modules = f.src.filter(existsFilter).map(function(filepath) {
