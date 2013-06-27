@@ -120,5 +120,15 @@ exports.html2js = {
           'expected compiled template module');
 
     test.done();
+  },
+  rename: function(test) {
+
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/rename.js',
+          'test/expected/rename.js',
+          'expected compiled template module');
+
+    test.done();
   }
 };

@@ -65,6 +65,9 @@ module.exports = function(grunt) {
       var modules = f.src.filter(existsFilter).map(function(filepath) {
 
         var moduleName = normalizePath(path.relative(options.base, filepath));
+        if(grunt.util.kindOf(options.rename) === 'function') {
+          moduleName = options.rename(moduleName);
+        }
         moduleNames.push("'" + moduleName + "'");
 
         return compileTemplate(moduleName, filepath);
