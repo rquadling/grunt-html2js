@@ -94,6 +94,15 @@ module.exports = function(grunt) {
 	src: ['test/fixtures/three.tpl.html'],
 	dest: 'tmp/multi_lines.js'
       },
+      rename: {
+        options: {
+          rename: function(moduleName) {
+            return moduleName.replace('.html', '');
+          }
+        },
+        src: ['test/fixtures/one.tpl.html', 'test/fixtures/two.tpl.html'],
+        dest: 'tmp/rename.js'          
+      }
     },
 
     // Unit tests.

@@ -81,6 +81,18 @@ The name of the parent Angular module for each set of templates.  Defaults to th
 
 If no bundle module is desired, set this to false.
 
+#### options.rename
+Type: `Function`
+Default value: `none`
+
+A function that takes in the module identifier and returns the renamed module identifier to use instead for the template.  For example, a template located at `src/projects/projects.tpl.html` would be identified as `/src/projects/projects.tpl` with a rename function defined as:
+
+```
+function (moduleName) {
+  return '/' + moduleName.replace('.html', '');
+}
+```
+
 ### Usage Examples
 
 See the `Gruntfile.js` in the project source code for various configuration examples.
