@@ -120,7 +120,7 @@ options: { indentString: '    ' }
 to get, for example, 4-space indents. Same goes for tabs or any other
 indent system you want to use.
 
-fileHeaderString: 
+#### fileHeaderString: 
 Type: `String`
 Default value: ``
 
