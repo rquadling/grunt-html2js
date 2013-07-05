@@ -12,8 +12,10 @@ module.exports = function(grunt) {
 
   var path = require('path');
 
-  var escapeContent = function(content) {
-    return content.replace(/"/g, '\\"').replace(/\r?\n/g, '\\n" +\n    "');
+  var escapeContent = function(content, quoteChar, indentString) {
+    var quoteRegexp = new RegExp('\\' + quoteChar, 'g');
+    var nlReplace = '\\n' + quoteChar + ' +\n' + indentString + indentString + quoteChar;
+    return content.replace(quoteRegexp, '\\' + quoteChar).replace(/\r?\n/g, nlReplace);
   };
 
   // convert Windows file separator URL path separator
@@ -36,14 +38,15 @@ module.exports = function(grunt) {
   };
 
   // compile a template to an angular module
-  var compileTemplate = function(moduleName, filepath) {
+  var compileTemplate = function(moduleName, filepath, quoteChar, indentString) {
 
-    var content = escapeContent(grunt.file.read(filepath));
+    var content = escapeContent(grunt.file.read(filepath), quoteChar, indentString);
+    var doubleIndent = indentString + indentString
 
-    var module = 'angular.module("' + moduleName + 
-      '", []).run(["$templateCache", function($templateCache) ' +
-      '{\n  $templateCache.put("' + moduleName + '",\n    "' +  content + 
-      '");\n}]);\n';
+    var module = 'angular.module(' + quoteChar + moduleName +
+      quoteChar + ', []).run([' + quoteChar + '$templateCache' + quoteChar + ', function($templateCache) ' +
+      '{\n' + indentString + '$templateCache.put(' + quoteChar + moduleName + quoteChar + ',\n' + doubleIndent  + quoteChar +  content +
+       quoteChar + ');\n}]);\n';
 
     return module;
   };
@@ -52,7 +55,10 @@ module.exports = function(grunt) {
 
     var options = this.options({
       base: 'src',
-      module: 'templates-' + this.target
+      module: 'templates-' + this.target,
+      quoteChar: '"',
+      fileHeaderString: '',
+      indentString: '  '
     });
 
     // generate a separate module
@@ -70,10 +76,11 @@ module.exports = function(grunt) {
         }
         moduleNames.push("'" + moduleName + "'");
 
-        return compileTemplate(moduleName, filepath);
+        return compileTemplate(moduleName, filepath, options.quoteChar, options.indentString);
 
       }).join(grunt.util.normalizelf('\n'));
 
+      var fileHeader = options.fileHeaderString !== '' ? options.fileHeaderString + '\n' : '';
       var bundle = "";
       var targetModule = f.module || options.module;
       //Allow a 'no targetModule if module is null' option
@@ -81,7 +88,7 @@ module.exports = function(grunt) {
         bundle = "angular.module('" + targetModule + "', [" + 
           moduleNames.join(', ') + "]);\n\n";
       }
-      grunt.file.write(f.dest, bundle + modules);
+      grunt.file.write(f.dest, fileHeader + bundle + modules);
     });
     //Just have one output, so if we making thirty files it only does one line
     grunt.log.writeln("Successfully converted "+(""+this.files.length).green +
