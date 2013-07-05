@@ -94,6 +94,38 @@ module.exports = function(grunt) {
 	src: ['test/fixtures/three.tpl.html'],
 	dest: 'tmp/multi_lines.js'
       },
+      double_quotes: {
+        src: ['test/fixtures/four.tpl.html'],
+        dest: 'tmp/double_quotes.js'
+      },
+      single_quotes: {
+        src: ['test/fixtures/four.tpl.html'],
+        dest: 'tmp/single_quotes.js',
+        options: {
+          quoteChar: '\''
+        }
+      },
+      multi_lines_tabs: {
+        src: ['test/fixtures/three.tpl.html'],
+        dest: 'tmp/multi_lines_tabs.js',
+        options: {
+          indentString: '\t'
+        }
+      },
+      multi_lines_4space: {
+        src: ['test/fixtures/three.tpl.html'],
+        dest: 'tmp/multi_lines_4spaces.js',
+        options: {
+          indentString: '    '
+        }
+      },
+      file_header: {
+        src: ['test/fixtures/three.tpl.html'],
+        dest: 'tmp/file_header.js',
+        options: {
+          fileHeaderString: '/* global angular: false */\n'
+        }
+      },
       rename: {
         options: {
           rename: function(moduleName) {
