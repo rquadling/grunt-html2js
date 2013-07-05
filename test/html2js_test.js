@@ -121,6 +121,56 @@ exports.html2js = {
 
     test.done();
   },
+  multi_lines_4spaces: function(test) {
+
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/multi_lines_4spaces.js',
+        'test/expected/multi_lines_4spaces.js',
+        'expected compiled template module');
+
+    test.done();
+  },
+  multi_lines_tabs: function(test) {
+
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/multi_lines_tabs.js',
+        'test/expected/multi_lines_tabs.js',
+        'expected compiled template module');
+
+    test.done();
+  },
+  double_quotes: function(test) {
+
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/double_quotes.js',
+        'test/expected/double_quotes.js',
+        'expected compiled template module');
+
+    test.done();
+  },
+  single_quotes: function(test) {
+
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/single_quotes.js',
+        'test/expected/single_quotes.js',
+        'expected compiled template module');
+
+    test.done();
+  },
+  file_header: function(test) {
+
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/file_header.js',
+        'test/expected/file_header.js',
+        'expected compiled template module');
+
+    test.done();
+  },
   rename: function(test) {
 
     test.expect(1);
