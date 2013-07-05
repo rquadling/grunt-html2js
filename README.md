@@ -93,6 +93,41 @@ function (moduleName) {
 }
 ```
 
+#### options.quoteChar
+Type: `Character`
+Default value: `"`
+
+Strings are quoted with double-quotes by default.  However, for projects 
+that want strict single quote-only usage, you can specify:
+
+```
+options: { quoteChar: '\'' }
+```
+
+to use single quotes, or any other odd quoting character you want
+
+#### indentString
+Type: `String`
+Default value: `  `
+
+By default a 2-space indent is used for the generated code. However,
+you can specify alternate indenting via:
+
+```
+options: { indentString: '    ' }
+```
+
+to get, for example, 4-space indents. Same goes for tabs or any other
+indent system you want to use.
+
+fileHeaderString: 
+Type: `String`
+Default value: ``
+
+If specified, this string  will get written at the top of the output
+Template.js file. As an example, jshint directives such as
+/* global angular: false */ can be put at the head of the file.
+
 ### Usage Examples
 
 See the `Gruntfile.js` in the project source code for various configuration examples.
@@ -109,3 +144,5 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 0.1.3 Add option to set the `module` option to null to disable creation of bundle module
 
 0.1.4 Add rename option
+
+0.1.4 Add config options for quoteChar, indentString and fileHeaderString (thanks @jonathana)
