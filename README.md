@@ -73,6 +73,12 @@ Default value: `'src'`
 
 The prefix relative to the project directory that should be stripped from each template path to produce a module identifier for the template.  For example, a template located at `src/projects/projects.tpl.html` would be identified as just `projects/projects.tpl.html`.
 
+#### options.target
+Type: `String`
+Default value: `'js'`
+
+Language of the output file. Possible values: `'coffee'`, `'js'`.
+
 #### options.module
 Type: `String`
 Default value: `templates-TARGET` 
@@ -146,3 +152,5 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 0.1.4 Add rename option
 
 0.1.5 Add config options for quoteChar, indentString and fileHeaderString (thanks @jonathana)
+
+0.1.6 Add support for CoffeeScript (thanks @srigi)
