@@ -146,6 +146,14 @@ module.exports = function(grunt) {
         },
         src: ['test/fixtures/one.tpl.html', 'test/fixtures/two.tpl.html'],
         dest: 'tmp/rename.js'
+      },
+
+      coffee: {
+        options: {
+          target: 'coffee'
+        },
+        src: ['test/fixtures/one.tpl.html', 'test/fixtures/two.tpl.html'],
+        dest: 'tmp/coffee.coffee'
       }
     },
 
