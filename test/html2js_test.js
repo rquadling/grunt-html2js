@@ -35,6 +35,7 @@ exports.html2js = {
     // setup here if necessary
     done();
   },
+
   compact_format_default_options: function(test) {
 
     test.expect(1);
@@ -177,6 +178,16 @@ exports.html2js = {
 
     assertFileContentsEqual(test, 'tmp/rename.js',
           'test/expected/rename.js',
+          'expected compiled template module');
+
+    test.done();
+  },
+  coffee: function(test) {
+
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/coffee.coffee',
+          'test/expected/coffee.coffee',
           'expected compiled template module');
 
     test.done();

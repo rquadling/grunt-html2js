@@ -26,7 +26,7 @@ module.exports = function(grunt) {
     return p;
   };
 
-  // Warn on and remove invalid source files (if nonull was set).  
+  // Warn on and remove invalid source files (if nonull was set).
   var existsFilter = function(filepath) {
 
     if (!grunt.file.exists(filepath)) {
@@ -41,12 +41,25 @@ module.exports = function(grunt) {
   var compileTemplate = function(moduleName, filepath, quoteChar, indentString) {
 
     var content = escapeContent(grunt.file.read(filepath), quoteChar, indentString);
-    var doubleIndent = indentString + indentString
+    var doubleIndent = indentString + indentString;
 
     var module = 'angular.module(' + quoteChar + moduleName +
       quoteChar + ', []).run([' + quoteChar + '$templateCache' + quoteChar + ', function($templateCache) ' +
       '{\n' + indentString + '$templateCache.put(' + quoteChar + moduleName + quoteChar + ',\n' + doubleIndent  + quoteChar +  content +
        quoteChar + ');\n}]);\n';
+
+    return module;
+  };
+
+  // compile a template to an angular module
+  var compileCoffeeTemplate = function(moduleName, filepath, quoteChar, indentString) {
+    var content = escapeContent(grunt.file.read(filepath), quoteChar, indentString);
+    var doubleIndent = indentString + indentString;
+
+    var module = 'angular.module(' + quoteChar + moduleName +
+      quoteChar + ', []).run([' + quoteChar + '$templateCache' + quoteChar + ', ($templateCache) ->\n' +
+      indentString + '$templateCache.put(' + quoteChar + moduleName + quoteChar + ',\n' + doubleIndent  + quoteChar +  content +
+      quoteChar + ')\n])\n';
 
     return module;
   };
@@ -58,7 +71,8 @@ module.exports = function(grunt) {
       module: 'templates-' + this.target,
       quoteChar: '"',
       fileHeaderString: '',
-      indentString: '  '
+      indentString: '  ',
+      target: 'js'
     });
 
     // generate a separate module
@@ -75,8 +89,13 @@ module.exports = function(grunt) {
           moduleName = options.rename(moduleName);
         }
         moduleNames.push("'" + moduleName + "'");
-
-        return compileTemplate(moduleName, filepath, options.quoteChar, options.indentString);
+        if (options.target === 'js') {
+          return compileTemplate(moduleName, filepath, options.quoteChar, options.indentString);
+        } else if (options.target === 'coffee') {
+          return compileCoffeeTemplate(moduleName, filepath, options.quoteChar, options.indentString);
+        } else {
+          grunt.fail.fatal('Unknow target "' + options.target + '" specified');
+        }
 
       }).join(grunt.util.normalizelf('\n'));
 
@@ -85,13 +104,17 @@ module.exports = function(grunt) {
       var targetModule = f.module || options.module;
       //Allow a 'no targetModule if module is null' option
       if (targetModule) {
-        bundle = "angular.module('" + targetModule + "', [" + 
-          moduleNames.join(', ') + "]);\n\n";
+        bundle = "angular.module('" + targetModule + "', [" + moduleNames.join(', ') + "])";
+        if (options.target === 'js') {
+          bundle += ';';
+        }
+
+        bundle += "\n\n";
       }
       grunt.file.write(f.dest, fileHeader + bundle + modules);
     });
     //Just have one output, so if we making thirty files it only does one line
     grunt.log.writeln("Successfully converted "+(""+this.files.length).green +
-                      " html templates to js.");
+                      " html templates to " + options.target + ".");
   });
 };
