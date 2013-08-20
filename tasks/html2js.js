@@ -12,7 +12,9 @@ module.exports = function(grunt) {
 
   var path = require('path');
 
-  var escapeContent = function(content, quoteChar, indentString) {
+  var escapeContent = function(filepath, quoteChar, indentString, templatePathInComment) {
+    var comment = templatePathInComment ? '<!-- template: ' + filepath + ' -->\n' : '';
+    var content = comment + grunt.file.read(filepath);
     var quoteRegexp = new RegExp('\\' + quoteChar, 'g');
     var nlReplace = '\\n' + quoteChar + ' +\n' + indentString + indentString + quoteChar;
     return content.replace(quoteRegexp, '\\' + quoteChar).replace(/\r?\n/g, nlReplace);
@@ -38,9 +40,9 @@ module.exports = function(grunt) {
   };
 
   // compile a template to an angular module
-  var compileTemplate = function(moduleName, filepath, quoteChar, indentString) {
+  var compileTemplate = function(moduleName, filepath, quoteChar, indentString, templatePathInComment) {
 
-    var content = escapeContent(grunt.file.read(filepath), quoteChar, indentString);
+    var content = escapeContent(filepath, quoteChar, indentString, templatePathInComment);
     var doubleIndent = indentString + indentString;
 
     var module = 'angular.module(' + quoteChar + moduleName +
@@ -52,8 +54,8 @@ module.exports = function(grunt) {
   };
 
   // compile a template to an angular module
-  var compileCoffeeTemplate = function(moduleName, filepath, quoteChar, indentString) {
-    var content = escapeContent(grunt.file.read(filepath), quoteChar, indentString);
+  var compileCoffeeTemplate = function(moduleName, filepath, quoteChar, indentString, templatePathInComment) {
+    var content = escapeContent(filepath, quoteChar, indentString, templatePathInComment);
     var doubleIndent = indentString + indentString;
 
     var module = 'angular.module(' + quoteChar + moduleName +
@@ -71,6 +73,7 @@ module.exports = function(grunt) {
       module: 'templates-' + this.target,
       quoteChar: '"',
       fileHeaderString: '',
+      templatePathInComment: false,
       indentString: '  ',
       target: 'js'
     });
@@ -90,11 +93,11 @@ module.exports = function(grunt) {
         }
         moduleNames.push("'" + moduleName + "'");
         if (options.target === 'js') {
-          return compileTemplate(moduleName, filepath, options.quoteChar, options.indentString);
+          return compileTemplate(moduleName, filepath, options.quoteChar, options.indentString, options.templatePathInComment);
         } else if (options.target === 'coffee') {
-          return compileCoffeeTemplate(moduleName, filepath, options.quoteChar, options.indentString);
+          return compileCoffeeTemplate(moduleName, filepath, options.quoteChar, options.indentString, options.templatePathInComment);
         } else {
-          grunt.fail.fatal('Unknow target "' + options.target + '" specified');
+          grunt.fail.fatal('Unknown target "' + options.target + '" specified');
         }
 
       }).join(grunt.util.normalizelf('\n'));
@@ -113,7 +116,7 @@ module.exports = function(grunt) {
       }
       grunt.file.write(f.dest, fileHeader + bundle + modules);
     });
-    //Just have one output, so if we making thirty files it only does one line
+    //Just have one output, so if we are making thirty files it only does one line
     grunt.log.writeln("Successfully converted "+(""+this.files.length).green +
                       " html templates to " + options.target + ".");
   });
