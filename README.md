@@ -134,6 +134,13 @@ If specified, this string  will get written at the top of the output
 Template.js file. As an example, jshint directives such as
 /* global angular: false */ can be put at the head of the file.
 
+#### templatePathInComment: 
+Type: `String`
+Default value: ``
+
+If specified, adds an HTML comment containing the template file path
+as a comment at the start of each template.
+
 ### Usage Examples
 
 See the `Gruntfile.js` in the project source code for various configuration examples.

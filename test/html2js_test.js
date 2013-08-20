@@ -172,6 +172,16 @@ exports.html2js = {
 
     test.done();
   },
+  template_path_in_comment: function(test) {
+
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/template_path_in_comment.js',
+        'test/expected/template_path_in_comment.js',
+        'expected template path in comment');
+
+    test.done();
+  },
   rename: function(test) {
 
     test.expect(1);

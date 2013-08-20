@@ -138,6 +138,14 @@ module.exports = function(grunt) {
         dest: 'tmp/file_header.js'
       },
 
+      template_path_in_comment: {
+        options: {
+          templatePathInComment: true
+        },
+        src: ['test/fixtures/three.tpl.html'],
+        dest: 'tmp/template_path_in_comment.js'
+      },
+
       rename: {
         options: {
           rename: function(moduleName) {
