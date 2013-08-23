@@ -154,3 +154,5 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 0.1.5 Add config options for quoteChar, indentString and fileHeaderString (thanks @jonathana)
 
 0.1.6 Add support for CoffeeScript (thanks @srigi)
+
+0.1.7 Escape backslashes in template source (issue #11, thanks @JoakimBe)
