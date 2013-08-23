@@ -36,6 +36,16 @@ exports.html2js = {
     done();
   },
 
+  regex_in_template: function(test) {
+
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/regex_in_template.js',
+          'test/expected/regex_in_template.js',
+          'expected compiled template module');
+
+    test.done();
+  },
   compact_format_default_options: function(test) {
 
     test.expect(1);

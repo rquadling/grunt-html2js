@@ -32,6 +32,12 @@ module.exports = function(grunt) {
     // See https://github.com/gruntjs/grunt/wiki/Configuring-tasks
     // for configuration options that need to be tested
     html2js: {
+
+      regex_in_template: {
+        src: ['test/fixtures/pattern.tpl.html'],
+        dest: 'tmp/regex_in_template.js'
+      },
+
       compact_format_default_options: {
         src: ['test/fixtures/one.tpl.html', 'test/fixtures/two.tpl.html'],
         dest: 'tmp/compact_format_default_options.js'
