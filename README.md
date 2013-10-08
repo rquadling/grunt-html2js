@@ -134,6 +134,14 @@ If specified, this string  will get written at the top of the output
 Template.js file. As an example, jshint directives such as
 /* global angular: false */ can be put at the head of the file.
 
+#### fileFooterString: 
+Type: `String`
+Default value: ``
+
+If specified, this string  will get written at the end of the output
+file.  May be used in conjunction with `fileHeaderString` to wrap
+the output.
+
 ### Usage Examples
 
 See the `Gruntfile.js` in the project source code for various configuration examples.
@@ -156,3 +164,5 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 0.1.6 Add support for CoffeeScript (thanks @srigi)
 
 0.1.7 Escape backslashes in template source (issue #11, thanks @JoakimBe)
+
+0.1.8 Add fileFooterString option (issue #13, thanks @duro)
