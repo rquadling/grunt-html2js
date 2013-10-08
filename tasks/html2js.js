@@ -72,6 +72,7 @@ module.exports = function(grunt) {
       module: 'templates-' + this.target,
       quoteChar: '"',
       fileHeaderString: '',
+      fileFooterString: '',
       indentString: '  ',
       target: 'js'
     });
@@ -101,6 +102,7 @@ module.exports = function(grunt) {
       }).join(grunt.util.normalizelf('\n'));
 
       var fileHeader = options.fileHeaderString !== '' ? options.fileHeaderString + '\n' : '';
+      var fileFooter = options.fileFooterString !== '' ? options.fileFooterString + '\n' : '';
       var bundle = "";
       var targetModule = f.module || options.module;
       //Allow a 'no targetModule if module is null' option
@@ -112,7 +114,7 @@ module.exports = function(grunt) {
 
         bundle += "\n\n";
       }
-      grunt.file.write(f.dest, fileHeader + bundle + modules);
+      grunt.file.write(f.dest, fileHeader + bundle + modules + fileFooter);
     });
     //Just have one output, so if we making thirty files it only does one line
     grunt.log.writeln("Successfully converted "+(""+this.files.length).green +
