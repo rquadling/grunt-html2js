@@ -25,7 +25,7 @@ var grunt = require('grunt');
 var assertFileContentsEqual = function(test, actualFile, expectedFile, message) {
 
   var actual = grunt.file.read(actualFile);
-  var expected = grunt.file.read(expectedFile);
+  var expected = grunt.util.normalizelf(grunt.file.read(expectedFile));
   test.equal(actual, expected, message);
 };
 
@@ -201,5 +201,15 @@ exports.html2js = {
           'expected compiled template module');
 
     test.done();
-  }
+  },
+  strict_mode: function(test) {
+
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/strict_mode.js',
+          'test/expected/strict_mode.js',
+          'expected strict mode in templates');
+
+    test.done();
+  },
 };

@@ -142,6 +142,17 @@ If specified, this string  will get written at the end of the output
 file.  May be used in conjunction with `fileHeaderString` to wrap
 the output.
 
+#### useStrict: 
+Type: `Boolean`
+Default value: ``
+
+If set true, each module in JavaScript will have 'use strict'; written at the top of the
+module.  Useful for global strict jshint settings.
+
+```
+options: { useStrict: true }
+```
+
 ### Usage Examples
 
 See the `Gruntfile.js` in the project source code for various configuration examples.

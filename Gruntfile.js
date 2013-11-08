@@ -160,6 +160,14 @@ module.exports = function(grunt) {
         },
         src: ['test/fixtures/one.tpl.html', 'test/fixtures/two.tpl.html'],
         dest: 'tmp/coffee.coffee'
+      },
+      
+      strict_mode: {
+        options: {
+          useStrict: true
+        },
+        src: ['test/fixtures/one.tpl.html'],
+        dest: 'tmp/strict_mode.js'
       }
     },
 
