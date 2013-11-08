@@ -39,14 +39,15 @@ module.exports = function(grunt) {
   };
 
   // compile a template to an angular module
-  var compileTemplate = function(moduleName, filepath, quoteChar, indentString) {
+  var compileTemplate = function(moduleName, filepath, quoteChar, indentString, useStrict) {
 
     var content = escapeContent(grunt.file.read(filepath), quoteChar, indentString);
     var doubleIndent = indentString + indentString;
+    var strict = (useStrict) ? indentString + quoteChar + 'use strict' + quoteChar + ';\n' : '';
 
     var module = 'angular.module(' + quoteChar + moduleName +
       quoteChar + ', []).run([' + quoteChar + '$templateCache' + quoteChar + ', function($templateCache) ' +
-      '{\n' + indentString + '$templateCache.put(' + quoteChar + moduleName + quoteChar + ',\n' + doubleIndent  + quoteChar +  content +
+      '{\n' + strict + indentString + '$templateCache.put(' + quoteChar + moduleName + quoteChar + ',\n' + doubleIndent  + quoteChar +  content +
        quoteChar + ');\n}]);\n';
 
     return module;
@@ -92,14 +93,14 @@ module.exports = function(grunt) {
         }
         moduleNames.push("'" + moduleName + "'");
         if (options.target === 'js') {
-          return compileTemplate(moduleName, filepath, options.quoteChar, options.indentString);
+          return compileTemplate(moduleName, filepath, options.quoteChar, options.indentString, options.useStrict);
         } else if (options.target === 'coffee') {
           return compileCoffeeTemplate(moduleName, filepath, options.quoteChar, options.indentString);
         } else {
           grunt.fail.fatal('Unknow target "' + options.target + '" specified');
         }
 
-      }).join(grunt.util.normalizelf('\n'));
+      }).join('\n');
 
       var fileHeader = options.fileHeaderString !== '' ? options.fileHeaderString + '\n' : '';
       var fileFooter = options.fileFooterString !== '' ? options.fileFooterString + '\n' : '';
@@ -114,7 +115,7 @@ module.exports = function(grunt) {
 
         bundle += "\n\n";
       }
-      grunt.file.write(f.dest, fileHeader + bundle + modules + fileFooter);
+      grunt.file.write(f.dest, grunt.util.normalizelf(fileHeader + bundle + modules + fileFooter));
     });
     //Just have one output, so if we making thirty files it only does one line
     grunt.log.writeln("Successfully converted "+(""+this.files.length).green +
