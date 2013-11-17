@@ -212,4 +212,14 @@ exports.html2js = {
 
     test.done();
   },
+  htmlmin: function(test) {
+
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/htmlmin.js',
+      'test/expected/htmlmin.js',
+      'expected minified template');
+
+    test.done();
+  }
 };
