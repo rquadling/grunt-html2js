@@ -153,6 +153,27 @@ module.  Useful for global strict jshint settings.
 options: { useStrict: true }
 ```
 
+#### htmlmin:
+Type: `Object`
+Default value: ``
+
+Minifies HTML using [html-minifier](https://github.com/kangax/html-minifier).
+
+```
+options: {
+  htmlmin: {
+    collapseBooleanAttributes: true,
+    collapseWhitespace: true,
+    removeAttributeQuotes: true,
+    removeComments: true,
+    removeEmptyAttributes: true,
+    removeRedundantAttributes: true,
+    removeScriptTypeAttributes: true,
+    removeStyleLinkTypeAttributes: true
+  }
+}
+```
+
 ### Usage Examples
 
 See the `Gruntfile.js` in the project source code for various configuration examples.

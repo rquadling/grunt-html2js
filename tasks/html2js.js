@@ -11,6 +11,7 @@
 module.exports = function(grunt) {
 
   var path = require('path');
+  var minify = require('html-minifier').minify;
 
   var escapeContent = function(content, quoteChar, indentString) {
     var bsRegexp = new RegExp('\\\\', 'g');
@@ -38,10 +39,27 @@ module.exports = function(grunt) {
     }
   };
 
-  // compile a template to an angular module
-  var compileTemplate = function(moduleName, filepath, quoteChar, indentString, useStrict) {
+  // return template content
+  var getContent = function(filepath, quoteChar, indentString, htmlmin) {
+    var file = grunt.file.read(filepath);
+    var content;
 
-    var content = escapeContent(grunt.file.read(filepath), quoteChar, indentString);
+    if (Object.keys(htmlmin).length) {
+      try {
+        content = minify(file, htmlmin);
+      } catch (err) {
+        grunt.warn(filepath + '\n' + err);
+      }
+    } else {
+      content = escapeContent(file, quoteChar, indentString);
+    }
+    return content;
+  };
+
+  // compile a template to an angular module
+  var compileTemplate = function(moduleName, filepath, quoteChar, indentString, useStrict, htmlmin) {
+
+    var content = getContent(filepath, quoteChar, indentString, htmlmin);
     var doubleIndent = indentString + indentString;
     var strict = (useStrict) ? indentString + quoteChar + 'use strict' + quoteChar + ';\n' : '';
 
@@ -54,8 +72,8 @@ module.exports = function(grunt) {
   };
 
   // compile a template to an angular module
-  var compileCoffeeTemplate = function(moduleName, filepath, quoteChar, indentString) {
-    var content = escapeContent(grunt.file.read(filepath), quoteChar, indentString);
+  var compileCoffeeTemplate = function(moduleName, filepath, quoteChar, indentString, htmlmin) {
+    var content = getContent(filepath, quoteChar, indentString, htmlmin);
     var doubleIndent = indentString + indentString;
 
     var module = 'angular.module(' + quoteChar + moduleName +
@@ -75,7 +93,8 @@ module.exports = function(grunt) {
       fileHeaderString: '',
       fileFooterString: '',
       indentString: '  ',
-      target: 'js'
+      target: 'js',
+      htmlmin: {}
     });
 
     // generate a separate module
@@ -93,9 +112,9 @@ module.exports = function(grunt) {
         }
         moduleNames.push("'" + moduleName + "'");
         if (options.target === 'js') {
-          return compileTemplate(moduleName, filepath, options.quoteChar, options.indentString, options.useStrict);
+          return compileTemplate(moduleName, filepath, options.quoteChar, options.indentString, options.useStrict, options.htmlmin);
         } else if (options.target === 'coffee') {
-          return compileCoffeeTemplate(moduleName, filepath, options.quoteChar, options.indentString);
+          return compileCoffeeTemplate(moduleName, filepath, options.quoteChar, options.indentString, options.htmlmin);
         } else {
           grunt.fail.fatal('Unknow target "' + options.target + '" specified');
         }

@@ -168,12 +168,29 @@ module.exports = function(grunt) {
         },
         src: ['test/fixtures/one.tpl.html'],
         dest: 'tmp/strict_mode.js'
+      },
+
+      htmlmin: {
+        options: {
+          htmlmin: {
+            collapseBooleanAttributes: true,
+            collapseWhitespace: true,
+            removeAttributeQuotes: true,
+            removeComments: true,
+            removeEmptyAttributes: true,
+            removeRedundantAttributes: true,
+            removeScriptTypeAttributes: true,
+            removeStyleLinkTypeAttributes: true
+          }
+        },
+        src: ['test/fixtures/five.tpl.html'],
+        dest: 'tmp/htmlmin.js'
       }
     },
 
     // Unit tests.
     nodeunit: {
-      tests: ['test/*_test.js'],
+      tests: ['test/*_test.js']
     }
   });
 
