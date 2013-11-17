@@ -155,7 +155,7 @@ options: { useStrict: true }
 
 #### htmlmin:
 Type: `Object`
-Default value: ``
+Default value: {}
 
 Minifies HTML using [html-minifier](https://github.com/kangax/html-minifier).
 
