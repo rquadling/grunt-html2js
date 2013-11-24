@@ -41,19 +41,17 @@ module.exports = function(grunt) {
 
   // return template content
   var getContent = function(filepath, quoteChar, indentString, htmlmin) {
-    var file = grunt.file.read(filepath);
-    var content;
+    var content = grunt.file.read(filepath);
 
     if (Object.keys(htmlmin).length) {
       try {
-        content = minify(file, htmlmin);
+        content = minify(content, htmlmin);
       } catch (err) {
         grunt.warn(filepath + '\n' + err);
       }
-    } else {
-      content = escapeContent(file, quoteChar, indentString);
-    }
-    return content;
+    } 
+
+    return escapeContent(content, quoteChar, indentString);
   };
 
   // compile a template to an angular module
