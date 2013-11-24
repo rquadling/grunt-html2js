@@ -200,3 +200,5 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 0.1.8 Add fileFooterString option (issue #13, thanks @duro)
 
 0.1.9 Add useStrict option (pull request #15, thanks @marcoose)
+
+0.2.0 Add htmlmin option (pull request #16, thanks @buberdds)
