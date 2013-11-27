@@ -95,6 +95,8 @@ module.exports = function(grunt) {
       htmlmin: {}
     });
 
+    var counter = 0;
+
     // generate a separate module
     this.files.forEach(function(f) {
 
@@ -117,7 +119,10 @@ module.exports = function(grunt) {
           grunt.fail.fatal('Unknow target "' + options.target + '" specified');
         }
 
-      }).join('\n');
+      });
+
+      counter += modules.length;
+      modules  = modules.join('\n');
 
       var fileHeader = options.fileHeaderString !== '' ? options.fileHeaderString + '\n' : '';
       var fileFooter = options.fileFooterString !== '' ? options.fileFooterString + '\n' : '';
@@ -135,7 +140,7 @@ module.exports = function(grunt) {
       grunt.file.write(f.dest, grunt.util.normalizelf(fileHeader + bundle + modules + fileFooter));
     });
     //Just have one output, so if we making thirty files it only does one line
-    grunt.log.writeln("Successfully converted "+(""+this.files.length).green +
+    grunt.log.writeln("Successfully converted "+(""+counter).green +
                       " html templates to " + options.target + ".");
   });
 };

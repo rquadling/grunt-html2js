@@ -204,3 +204,5 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 0.2.0 Add htmlmin option (pull request #16, thanks @buberdds)
 
 0.2.1 Fix dependencies for htmlmin (pull request #17, vielen dank @mlegenhausen)
+
+0.2.2 Fix counter of converted files (pull request #18, thanks @srigi)
