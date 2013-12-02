@@ -128,6 +128,10 @@ module.exports = function(grunt) {
       var fileFooter = options.fileFooterString !== '' ? options.fileFooterString + '\n' : '';
       var bundle = "";
       var targetModule = f.module || options.module;
+  	  // If options.module is a function, use that to get the targetModule
+  	  if(typeof(options.module)	=== 'function') {
+    		targetModule = options.module(f.dest, f.src);
+  	  }
       //Allow a 'no targetModule if module is null' option
       if (targetModule) {
         bundle = "angular.module('" + targetModule + "', [" + moduleNames.join(', ') + "])";
