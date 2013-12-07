@@ -192,6 +192,16 @@ exports.html2js = {
 
     test.done();
   },
+  module_as_function: function(test) {
+
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/module_as_function.js',
+          'test/expected/module_as_function.js',
+          'expected compiled template module');
+
+    test.done();
+  },
   coffee: function(test) {
 
     test.expect(1);

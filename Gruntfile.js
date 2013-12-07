@@ -154,6 +154,16 @@ module.exports = function(grunt) {
         dest: 'tmp/rename.js'
       },
 
+      module_as_function: {
+        options: {
+          module: function(file) {
+            return "NAME_FROM_FUNCTION";
+          }
+        },
+        src: ['test/fixtures/one.tpl.html', 'test/fixtures/two.tpl.html'],
+        dest: 'tmp/module_as_function.js'
+      },
+
       coffee: {
         options: {
           target: 'coffee'

@@ -80,10 +80,12 @@ Default value: `'js'`
 Language of the output file. Possible values: `'coffee'`, `'js'`.
 
 #### options.module
-Type: `String`
+Type: `String` or `Function`
 Default value: `templates-TARGET` 
 
 The name of the parent Angular module for each set of templates.  Defaults to the task target prefixed by `templates-`.
+
+The value of this argument can be a string or a function.  The function should expect the module file path as an argument, and it should return the name to use for the parent Angular module.
 
 If no bundle module is desired, set this to false.
 
@@ -206,3 +208,5 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 0.2.1 Fix dependencies for htmlmin (pull request #17, vielen dank @mlegenhausen)
 
 0.2.2 Fix counter of converted files (pull request #18, thanks @srigi)
+
+0.2.3 Add option to interpret 'module' as function (pull request #20, thanks @CodingGorilla)
