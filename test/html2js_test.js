@@ -240,5 +240,14 @@ exports.html2js = {
         'expected grunt templates to be processed');
 
     test.done();
+  },
+  process_function: function(test) {
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/process_function.js',
+        'test/expected/process_function.js',
+        'expected grunt templates to be processed by a custom function');
+
+    test.done();
   }
 };

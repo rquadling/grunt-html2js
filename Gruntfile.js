@@ -207,6 +207,19 @@ module.exports = function(grunt) {
         },
         src: ['test/fixtures/process_template.tpl.html'],
         dest: 'tmp/process_template.js'
+      },
+
+      process_function: {
+        options: {
+          process: function(html, filePath) {
+            html = html.replace('(ONE)', '1');
+            html = html.replace('(TWO)', '2');
+            html = html.replace('(THREE)', '3');
+            return html;
+          }
+        },
+        src: ['test/fixtures/process_function.tpl.html'],
+        dest: 'tmp/process_function.js'
       }
     },
 
