@@ -231,5 +231,14 @@ exports.html2js = {
       'expected minified template');
 
     test.done();
+  },
+  process_template: function(test) {
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/process_template.js',
+        'test/expected/process_template.js',
+        'expected grunt templates to be processed');
+
+    test.done();
   }
 };

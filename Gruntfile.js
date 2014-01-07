@@ -195,6 +195,18 @@ module.exports = function(grunt) {
         },
         src: ['test/fixtures/five.tpl.html'],
         dest: 'tmp/htmlmin.js'
+      },
+
+      process_template: {
+        testMessages: {
+          title: 'Main Title',
+          subtitle: 'Subtitle with {{ interpolation }}'
+        },
+        options: {
+          process: true
+        },
+        src: ['test/fixtures/process_template.tpl.html'],
+        dest: 'tmp/process_template.js'
       }
     },
 
