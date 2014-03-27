@@ -249,5 +249,14 @@ exports.html2js = {
         'expected grunt templates to be processed by a custom function');
 
     test.done();
+  },
+  process_with_replace_option: function(test) {
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/base_replace_with.js',
+        'test/expected/base_replace_with.js',
+        'expected compiled template module');
+
+    test.done();
   }
 };

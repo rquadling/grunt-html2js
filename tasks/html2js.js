@@ -117,7 +117,13 @@ module.exports = function(grunt) {
 
       var modules = f.src.filter(existsFilter).map(function(filepath) {
 
-        var moduleName = normalizePath(path.relative(options.base, filepath));
+        var moduleName;
+        if (options.base_replace_with !== undefined) {
+          moduleName = filepath.replace(options.base, options.base_replace_with);
+        } else {
+          moduleName = normalizePath(path.relative(options.base, filepath));
+        }
+		
         if (grunt.util.kindOf(options.rename) === 'function') {
           moduleName = options.rename(moduleName);
         }
