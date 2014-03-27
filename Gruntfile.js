@@ -220,6 +220,15 @@ module.exports = function(grunt) {
         },
         src: ['test/fixtures/process_function.tpl.html'],
         dest: 'tmp/process_function.js'
+      },
+
+      process_with_replace_option : {
+        options: {
+          base: 'test/fixtures',
+          base_replace_with: 'templates'
+        },
+        src: ['test/fixtures/one.tpl.html'],
+        dest: 'tmp/base_replace_with.js'
       }
     },
 

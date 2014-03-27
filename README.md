@@ -73,6 +73,11 @@ Default value: `'src'`
 
 The prefix relative to the project directory that should be stripped from each template path to produce a module identifier for the template.  For example, a template located at `src/projects/projects.tpl.html` would be identified as just `projects/projects.tpl.html`.
 
+#### options.base\_replace\_with
+Type: `String`
+
+If this option is used then it will replace the value of base with the string specified here. For example if a template is located at `src/projects/projects.tpl.html` and base is set to `src` and additionally base\_replace\_with is set to `templates` then the templates will be identified as `templates/projects/projects.tpl.html`. This is useful if you want to only use the template cache during a production build, but still wish to use standard lazy loaded html templates in development for easier debugging.
+
 #### options.target
 Type: `String`
 Default value: `'js'`
