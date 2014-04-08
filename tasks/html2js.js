@@ -61,7 +61,8 @@ module.exports = function(grunt) {
       }
     } 
     
-    content = content.trim();
+    // trim leading whitespace
+    content = content.replace(/(^\s*)/g, '');
 
     return escapeContent(content, quoteChar, indentString);
   };
