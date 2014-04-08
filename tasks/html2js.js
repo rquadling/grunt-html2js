@@ -60,6 +60,8 @@ module.exports = function(grunt) {
         grunt.warn(filepath + '\n' + err);
       }
     } 
+    
+    content = content.trim();
 
     return escapeContent(content, quoteChar, indentString);
   };
