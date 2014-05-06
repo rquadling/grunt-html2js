@@ -60,6 +60,9 @@ module.exports = function(grunt) {
         grunt.warn(filepath + '\n' + err);
       }
     } 
+    
+    // trim leading whitespace
+    content = content.replace(/(^\s*)/g, '');
 
     return escapeContent(content, quoteChar, indentString);
   };
