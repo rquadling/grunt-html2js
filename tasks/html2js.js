@@ -110,7 +110,7 @@ module.exports = function(grunt) {
     });
 
     var counter = 0;
-
+    var target = this.target;
     // generate a separate module
     this.files.forEach(function(f) {
 
@@ -144,7 +144,7 @@ module.exports = function(grunt) {
       var targetModule = f.module || options.module;
       // If options.module is a function, use that to get the targetModule
       if (grunt.util.kindOf(targetModule) === 'function') {
-	targetModule = targetModule(f, this.target);
+	targetModule = targetModule(f, target);
       }
       //Allow a 'no targetModule if module is null' option
       if (targetModule) {
