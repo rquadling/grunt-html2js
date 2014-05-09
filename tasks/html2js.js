@@ -144,7 +144,7 @@ module.exports = function(grunt) {
       var targetModule = f.module || options.module;
       // If options.module is a function, use that to get the targetModule
       if (grunt.util.kindOf(targetModule) === 'function') {
-	targetModule = targetModule(f);
+	targetModule = targetModule(f, this.target);
       }
       //Allow a 'no targetModule if module is null' option
       if (targetModule) {
