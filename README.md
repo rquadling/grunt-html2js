@@ -85,7 +85,7 @@ Default value: `templates-TARGET`
 
 The name of the parent Angular module for each set of templates.  Defaults to the task target prefixed by `templates-`.
 
-The value of this argument can be a string or a function.  The function should expect the module file path as an argument, and it should return the name to use for the parent Angular module.
+The value of this argument can be a string or a function.  The function should expect the module file path and grunt task name as arguments, and it should return the name to use for the parent Angular module.
 
 If no bundle module is desired, set this to false.
 
@@ -224,3 +224,5 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 0.2.3 Add option to interpret 'module' as function (pull request #20, thanks @CodingGorilla)
 
 0.2.4 Add `process` option (pull request #24, thanks @scottrippey)
+
+0.2.5 Add task name as argument to function variant of module option (pull request #37, thanks @lukovnikov)
