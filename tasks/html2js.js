@@ -49,7 +49,9 @@ module.exports = function(grunt) {
   var getContent = function(filepath, quoteChar, indentString, htmlmin, process) {
     var content = grunt.file.read(filepath);
     if (isJadeTemplate(filepath)) {
-      content = jade.render(content);
+      content = jade.render(content, {
+        pretty: true
+      });
     }
 
     // Process files as templates if requested.
