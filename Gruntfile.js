@@ -171,7 +171,7 @@ module.exports = function(grunt) {
         src: ['test/fixtures/one.tpl.html', 'test/fixtures/two.tpl.html'],
         dest: 'tmp/coffee.coffee'
       },
-      
+
       strict_mode: {
         options: {
           useStrict: true
@@ -220,6 +220,11 @@ module.exports = function(grunt) {
         },
         src: ['test/fixtures/process_function.tpl.html'],
         dest: 'tmp/process_function.js'
+      },
+
+      process_jade: {
+        src: ['test/fixtures/process_jade.jade'],
+        dest: 'tmp/process_jade.js'
       }
     },
 

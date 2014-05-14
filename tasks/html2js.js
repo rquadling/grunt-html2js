@@ -12,6 +12,7 @@ module.exports = function(grunt) {
 
   var path = require('path');
   var minify = require('html-minifier').minify;
+  var jade = require('jade');
 
   var escapeContent = function(content, quoteChar, indentString) {
     var bsRegexp = new RegExp('\\\\', 'g');
@@ -39,9 +40,17 @@ module.exports = function(grunt) {
     }
   };
 
+  function isJadeTemplate(filepath) {
+    var jadeExtension = /\.jade$/;
+    return jadeExtension.test(filepath);
+  }
+
   // return template content
   var getContent = function(filepath, quoteChar, indentString, htmlmin, process) {
     var content = grunt.file.read(filepath);
+    if (isJadeTemplate(filepath)) {
+      content = jade.render(content);
+    }
 
     // Process files as templates if requested.
     if (typeof process === "function") {
@@ -59,8 +68,8 @@ module.exports = function(grunt) {
       } catch (err) {
         grunt.warn(filepath + '\n' + err);
       }
-    } 
-    
+    }
+
     // trim leading whitespace
     content = content.replace(/(^\s*)/g, '');
 
