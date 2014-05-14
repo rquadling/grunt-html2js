@@ -39,7 +39,7 @@ This simplest configuration will assemble all templates in your src tree into a 
 grunt.initConfig({
   html2js: {
     options: {
-      // custom options, see below    
+      // custom options, see below
     },
     main: {
       src: ['src/**/*.tpl.html'],
@@ -81,7 +81,7 @@ Language of the output file. Possible values: `'coffee'`, `'js'`.
 
 #### options.module
 Type: `String` or `Function`
-Default value: `templates-TARGET` 
+Default value: `templates-TARGET`
 
 The name of the parent Angular module for each set of templates.  Defaults to the task target prefixed by `templates-`.
 
@@ -105,7 +105,7 @@ function (moduleName) {
 Type: `Character`
 Default value: `"`
 
-Strings are quoted with double-quotes by default.  However, for projects 
+Strings are quoted with double-quotes by default.  However, for projects
 that want strict single quote-only usage, you can specify:
 
 ```
@@ -128,7 +128,7 @@ options: { indentString: '    ' }
 to get, for example, 4-space indents. Same goes for tabs or any other
 indent system you want to use.
 
-#### fileHeaderString: 
+#### fileHeaderString:
 Type: `String`
 Default value: ``
 
@@ -136,7 +136,7 @@ If specified, this string  will get written at the top of the output
 Template.js file. As an example, jshint directives such as
 /* global angular: false */ can be put at the head of the file.
 
-#### fileFooterString: 
+#### fileFooterString:
 Type: `String`
 Default value: ``
 
@@ -144,7 +144,7 @@ If specified, this string  will get written at the end of the output
 file.  May be used in conjunction with `fileHeaderString` to wrap
 the output.
 
-#### useStrict: 
+#### useStrict:
 Type: `Boolean`
 Default value: ``
 
@@ -187,6 +187,11 @@ Option value can be one of:
 1. a function that accepts `content` and `filepath` as arguments, and returns the transformed content
 2. an object that is passed as the second options argument to `grunt.template.process` (with the file content as the first argument)
 3.  `true` to call `grunt.template.process` with the content and no options
+
+### Jade support
+
+If template filename ends with `.jade` the task will automatically render file's content using [Jade](https://github.com/visionmedia/jade)
+then compile into JS.
 
 ### Usage Examples
 
