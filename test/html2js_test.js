@@ -249,5 +249,14 @@ exports.html2js = {
         'expected grunt templates to be processed by a custom function');
 
     test.done();
-  }
+  },
+  process_jade: function(test) {
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/process_jade.js',
+        'test/expected/process_jade.js',
+        'expected jade template to be processed');
+
+    test.done();
+  },
 };
