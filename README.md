@@ -239,3 +239,5 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 0.2.5 Add task name as argument to function variant of module option (pull request #37, thanks @lukovnikov)
 
 0.2.6 Add support for auto-detecting Jade templates as input (thanks @bahmutov)
+
+0.2.7 Add singleModule module for placing all templates in a single module (PR #43, thanks @janeklb)
