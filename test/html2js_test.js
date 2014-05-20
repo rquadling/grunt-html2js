@@ -259,4 +259,23 @@ exports.html2js = {
 
     test.done();
   },
+  single_module: function(test) {
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/single_module.js',
+        'test/expected/single_module.js',
+        'expected template with single module');
+
+    test.done();
+  },
+  single_module_coffee: function(test) {
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/single_module.coffee',
+        'test/expected/single_module.coffee',
+        'expected coffee template with single module');
+
+    test.done();
+
+  }
 };

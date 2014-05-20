@@ -188,6 +188,12 @@ Option value can be one of:
 2. an object that is passed as the second options argument to `grunt.template.process` (with the file content as the first argument)
 3.  `true` to call `grunt.template.process` with the content and no options
 
+#### singleModule
+Type: `Boolean`
+Default value: `false`
+
+If set to true, will create a single wrapping module with a run block, instead of an individual module for each template file. Requres that the `module` option is not falsy.
+
 ### Jade support
 
 If template filename ends with `.jade` the task will automatically render file's content using [Jade](https://github.com/visionmedia/jade)

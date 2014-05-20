@@ -225,6 +225,23 @@ module.exports = function(grunt) {
       process_jade: {
         src: ['test/fixtures/process_jade.jade'],
         dest: 'tmp/process_jade.js'
+      },
+
+      single_module: {
+        options: {
+          singleModule: true
+        },
+        src: ['test/fixtures/one.tpl.html', 'test/fixtures/three.tpl.html'],
+        dest: 'tmp/single_module.js'
+      },
+
+      single_module_coffee: {
+        options: {
+          singleModule: true,
+          target: 'coffee'
+        },
+        src: ['test/fixtures/one.tpl.html', 'test/fixtures/three.tpl.html'],
+        dest: 'tmp/single_module.coffee'
       }
     },
 

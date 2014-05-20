@@ -79,31 +79,47 @@ module.exports = function(grunt) {
   };
 
   // compile a template to an angular module
-  var compileTemplate = function(moduleName, filepath, quoteChar, indentString, useStrict, htmlmin, process) {
+  var compileTemplate = function(moduleName, filepath, quoteChar, indentString, useStrict, htmlmin, process, withModule) {
 
     var content = getContent(filepath, quoteChar, indentString, htmlmin, process);
     var doubleIndent = indentString + indentString;
     var strict = (useStrict) ? indentString + quoteChar + 'use strict' + quoteChar + ';\n' : '';
+    var compiled = '';
 
-    var module = 'angular.module(' + quoteChar + moduleName +
-      quoteChar + ', []).run([' + quoteChar + '$templateCache' + quoteChar + ', function($templateCache) ' +
-      '{\n' + strict + indentString + '$templateCache.put(' + quoteChar + moduleName + quoteChar + ',\n' + doubleIndent  + quoteChar +  content +
-       quoteChar + ');\n}]);\n';
+    if (withModule) {
+      compiled += 'angular.module(' + quoteChar + moduleName +
+        quoteChar + ', []).run([' + quoteChar + '$templateCache' + quoteChar + ', function($templateCache) {\n' + strict;
+    }
 
-    return module;
+    compiled += indentString + '$templateCache.put(' + quoteChar + moduleName + quoteChar +
+      ',\n' + doubleIndent  + quoteChar +  content + quoteChar + ');';
+
+    if (withModule) {
+      compiled += '\n}]);\n';
+    }
+
+    return compiled;
   };
 
   // compile a template to an angular module
-  var compileCoffeeTemplate = function(moduleName, filepath, quoteChar, indentString, htmlmin, process) {
+  var compileCoffeeTemplate = function(moduleName, filepath, quoteChar, indentString, htmlmin, process, withModule) {
     var content = getContent(filepath, quoteChar, indentString, htmlmin, process);
     var doubleIndent = indentString + indentString;
+    var compiled = '';
 
-    var module = 'angular.module(' + quoteChar + moduleName +
-      quoteChar + ', []).run([' + quoteChar + '$templateCache' + quoteChar + ', ($templateCache) ->\n' +
-      indentString + '$templateCache.put(' + quoteChar + moduleName + quoteChar + ',\n' + doubleIndent  + quoteChar +  content +
-      quoteChar + ')\n])\n';
+    if (withModule) {
+      compiled += 'angular.module(' + quoteChar + moduleName +
+        quoteChar + ', []).run([' + quoteChar + '$templateCache' + quoteChar + ', ($templateCache) ->\n';
+    }
 
-    return module;
+    compiled += indentString + '$templateCache.put(' + quoteChar + moduleName + quoteChar +
+      ',\n' + doubleIndent  + quoteChar +  content + quoteChar + ')';
+
+    if (withModule) {
+      compiled += '\n])\n';
+    }
+
+    return compiled;
   };
 
   grunt.registerMultiTask('html2js', 'Compiles Angular-JS templates to JavaScript.', function() {
@@ -117,7 +133,8 @@ module.exports = function(grunt) {
       indentString: '  ',
       target: 'js',
       htmlmin: {},
-      process: false
+      process: false,
+      singleModule: false
     });
 
     var counter = 0;
@@ -137,9 +154,9 @@ module.exports = function(grunt) {
         }
         moduleNames.push("'" + moduleName + "'");
         if (options.target === 'js') {
-          return compileTemplate(moduleName, filepath, options.quoteChar, options.indentString, options.useStrict, options.htmlmin, options.process);
+          return compileTemplate(moduleName, filepath, options.quoteChar, options.indentString, options.useStrict, options.htmlmin, options.process, !options.singleModule);
         } else if (options.target === 'coffee') {
-          return compileCoffeeTemplate(moduleName, filepath, options.quoteChar, options.indentString, options.htmlmin, options.process);
+          return compileCoffeeTemplate(moduleName, filepath, options.quoteChar, options.indentString, options.htmlmin, options.process, !options.singleModule);
         } else {
           grunt.fail.fatal('Unknow target "' + options.target + '" specified');
         }
@@ -155,10 +172,23 @@ module.exports = function(grunt) {
       var targetModule = f.module || options.module;
       // If options.module is a function, use that to get the targetModule
       if (grunt.util.kindOf(targetModule) === 'function') {
-	targetModule = targetModule(f, target);
+        targetModule = targetModule(f, target);
       }
-      //Allow a 'no targetModule if module is null' option
-      if (targetModule) {
+
+      if (!targetModule && options.singleModule) {
+        throw new Error("When using singleModule: true be sure to specify a (target) module")
+      }
+
+      if (options.singleModule) {
+        if (options.target == 'js') {
+          bundle = "angular.module('" + targetModule + "', []).run(['$templateCache', function($templateCache) {\n";
+          modules += '\n}]);\n';
+        } else if (options.target == 'coffee') {
+          bundle = "angular.module('" + targetModule + "', []).run(['$templateCache', ($templateCache) ->\n";
+          modules += '\n])\n';
+        }
+      } else if (targetModule) {
+        //Allow a 'no targetModule if module is null' option
         bundle = "angular.module('" + targetModule + "', [" + moduleNames.join(', ') + "])";
         if (options.target === 'js') {
           bundle += ';';
