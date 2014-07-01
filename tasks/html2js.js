@@ -46,7 +46,7 @@ module.exports = function(grunt) {
   }
 
   // return template content
-  var getContent = function(filepath, quoteChar, indentString, htmlmin, process) {
+  var getContent = function(filepath, options) {
     var content = grunt.file.read(filepath);
     if (isJadeTemplate(filepath)) {
       content = jade.render(content, {
@@ -55,6 +55,7 @@ module.exports = function(grunt) {
     }
 
     // Process files as templates if requested.
+    var process = options.process;
     if (typeof process === "function") {
       content = process(content, filepath);
     } else if (process) {
@@ -64,9 +65,9 @@ module.exports = function(grunt) {
       content = grunt.template.process(content, process);
     }
 
-    if (Object.keys(htmlmin).length) {
+    if (Object.keys(options.htmlmin).length) {
       try {
-        content = minify(content, htmlmin);
+        content = minify(content, options.htmlmin);
       } catch (err) {
         grunt.warn(filepath + '\n' + err);
       }
@@ -75,15 +76,17 @@ module.exports = function(grunt) {
     // trim leading whitespace
     content = content.replace(/(^\s*)/g, '');
 
-    return escapeContent(content, quoteChar, indentString);
+    return escapeContent(content, options.quoteChar, options.indentString);
   };
 
   // compile a template to an angular module
-  var compileTemplate = function(moduleName, filepath, quoteChar, indentString, useStrict, htmlmin, process, withModule) {
-
-    var content = getContent(filepath, quoteChar, indentString, htmlmin, process);
+  var compileTemplate = function(moduleName, filepath, options) {
+    var quoteChar    = options.quoteChar;
+    var indentString = options.indentString;
+    var withModule   = !options.singleModule;
+    var content      = getContent(filepath, options);
     var doubleIndent = indentString + indentString;
-    var strict = (useStrict) ? indentString + quoteChar + 'use strict' + quoteChar + ';\n' : '';
+    var strict       = (options.useStrict) ? indentString + quoteChar + 'use strict' + quoteChar + ';\n' : '';
     var compiled = '';
 
     if (withModule) {
@@ -102,8 +105,11 @@ module.exports = function(grunt) {
   };
 
   // compile a template to an angular module
-  var compileCoffeeTemplate = function(moduleName, filepath, quoteChar, indentString, htmlmin, process, withModule) {
-    var content = getContent(filepath, quoteChar, indentString, htmlmin, process);
+  var compileCoffeeTemplate = function(moduleName, filepath, options) {
+    var quoteChar    = options.quoteChar;
+    var indentString = options.indentString;
+    var withModule   = !options.singleModule;
+    var content = getContent(filepath, options);
     var doubleIndent = indentString + indentString;
     var compiled = '';
 
@@ -154,9 +160,9 @@ module.exports = function(grunt) {
         }
         moduleNames.push("'" + moduleName + "'");
         if (options.target === 'js') {
-          return compileTemplate(moduleName, filepath, options.quoteChar, options.indentString, options.useStrict, options.htmlmin, options.process, !options.singleModule);
+          return compileTemplate(moduleName, filepath, options);
         } else if (options.target === 'coffee') {
-          return compileCoffeeTemplate(moduleName, filepath, options.quoteChar, options.indentString, options.htmlmin, options.process, !options.singleModule);
+          return compileCoffeeTemplate(moduleName, filepath, options);
         } else {
           grunt.fail.fatal('Unknow target "' + options.target + '" specified');
         }
