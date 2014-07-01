@@ -49,9 +49,7 @@ module.exports = function(grunt) {
   var getContent = function(filepath, options) {
     var content = grunt.file.read(filepath);
     if (isJadeTemplate(filepath)) {
-      content = jade.render(content, {
-        pretty: true
-      });
+      content = jade.render(content, options.jade);
     }
 
     // Process files as templates if requested.
@@ -140,6 +138,7 @@ module.exports = function(grunt) {
       target: 'js',
       htmlmin: {},
       process: false,
+      jade: { pretty: true },
       singleModule: false
     });
 

@@ -227,6 +227,14 @@ module.exports = function(grunt) {
         dest: 'tmp/process_jade.js'
       },
 
+      process_jade_custom: {
+        options: {
+          jade: {doctype: 'html'}
+        },
+        src: ['test/fixtures/process_jade_custom.jade'],
+        dest: 'tmp/process_jade_custom.js'
+      },
+
       single_module: {
         options: {
           singleModule: true
