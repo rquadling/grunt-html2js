@@ -199,6 +199,8 @@ If set to true, will create a single wrapping module with a run block, instead o
 If template filename ends with `.jade` the task will automatically render file's content using [Jade](https://github.com/visionmedia/jade)
 then compile into JS.
 
+Options can be passed to Jade within a `jade` property in the plugin options.
+
 ### Usage Examples
 
 See the `Gruntfile.js` in the project source code for various configuration examples.
@@ -241,3 +243,5 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 0.2.6 Add support for auto-detecting Jade templates as input (thanks @bahmutov)
 
 0.2.7 Add singleModule module for placing all templates in a single module (PR #43, thanks @janeklb)
+
+0.2.8 Allow passing option to Jade templates (PR #46, thanks @NickClark)
