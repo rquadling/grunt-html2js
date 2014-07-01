@@ -259,6 +259,15 @@ exports.html2js = {
 
     test.done();
   },
+  process_jade_with_custom_options: function(test) {
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/process_jade_custom.js',
+        'test/expected/process_jade_custom.js',
+        'expected jade template to be processed with custom options');
+
+    test.done();
+  },
   single_module: function(test) {
     test.expect(1);
 
