@@ -29,7 +29,7 @@ Note that this plugin does *not* compile the templates.  It simply caches the te
 
 ### Setup
 
-By default, this plugin assumes you are following the naming conventions and build pipeline of the [angular-app][https://github.com/angular-app/angular-app] demo application.
+By default, this plugin assumes you are following the naming conventions and build pipeline of the [angular-app](https://github.com/angular-app/angular-app) demo application.
 
 In your project's Gruntfile, add a section named `html2js` to the data object passed into `grunt.initConfig()`.
 
