@@ -235,6 +235,14 @@ module.exports = function(grunt) {
         dest: 'tmp/process_jade_custom.js'
       },
 
+      process_jade_with_include: {
+        options: {
+          jade: {}
+        },
+        src: ['test/fixtures/process_jade_with_include.jade'],
+        dest: 'tmp/process_jade_with_include.js'
+      },
+
       single_module: {
         options: {
           singleModule: true
