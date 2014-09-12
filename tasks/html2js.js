@@ -131,6 +131,7 @@ module.exports = function(grunt) {
     var options = this.options({
       base: 'src',
       module: 'templates-' + this.target,
+      newModule: true,
       quoteChar: '"',
       fileHeaderString: '',
       fileFooterString: '',
@@ -186,10 +187,10 @@ module.exports = function(grunt) {
 
       if (options.singleModule) {
         if (options.target == 'js') {
-          bundle = "angular.module('" + targetModule + "', []).run(['$templateCache', function($templateCache) {\n";
+          bundle = "angular.module('" + targetModule + (options.newModule? "', []" : "'") + ").run(['$templateCache', function($templateCache) {\n";
           modules += '\n}]);\n';
         } else if (options.target == 'coffee') {
-          bundle = "angular.module('" + targetModule + "', []).run(['$templateCache', ($templateCache) ->\n";
+          bundle = "angular.module('" + targetModule + (options.newModule? "', []" : "'") + ").run(['$templateCache', ($templateCache) ->\n";
           modules += '\n])\n';
         }
       } else if (targetModule) {
