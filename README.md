@@ -245,3 +245,5 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 0.2.7 Add singleModule module for placing all templates in a single module (PR #43, thanks @janeklb)
 
 0.2.8 Allow passing option to Jade templates (PR #46, thanks @NickClark)
+
+0.2.9 Support relative file names for Jade templates (PR #48, thanks @dvonlehman)
