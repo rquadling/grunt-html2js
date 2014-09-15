@@ -182,14 +182,14 @@ module.exports = function(grunt) {
       }
 
       if (!targetModule && options.singleModule) {
-        throw new Error("When using singleModule: true be sure to specify a (target) module")
+        throw new Error("When using singleModule: true be sure to specify a (target) module");
       }
 
       if (options.singleModule) {
-        if (options.target == 'js') {
+        if (options.target === 'js') {
           bundle = "angular.module('" + targetModule + "', []).run(['$templateCache', function($templateCache) {\n";
           modules += '\n}]);\n';
-        } else if (options.target == 'coffee') {
+        } else if (options.target === 'coffee') {
           bundle = "angular.module('" + targetModule + "', []).run(['$templateCache', ($templateCache) ->\n";
           modules += '\n])\n';
         }
