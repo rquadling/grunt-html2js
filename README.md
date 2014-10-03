@@ -201,6 +201,17 @@ then compile into JS.
 
 Options can be passed to Jade within a `jade` property in the plugin options.
 
+```
+options: {
+  jade: {
+    //this prevents auto expansion of empty arguments
+    //e.g. "div(ui-view)" becomes "<div ui-view></div>" 
+    //     instead of "<div ui-view="ui-view"></div>"
+    doctype: "html"
+  }
+}
+```
+
 ### Usage Examples
 
 See the `Gruntfile.js` in the project source code for various configuration examples.
