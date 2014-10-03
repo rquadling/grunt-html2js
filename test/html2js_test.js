@@ -22,10 +22,28 @@ var grunt = require('grunt');
     test.ifError(value)
 */
 
+var strContext = function(s, pos, size) {
+  var start = pos - size > 0 ? pos - size : 0;
+  var end = pos + size < s.length ? pos + size : pos.length;
+  return s.substring(start, end);
+};
+
 var assertFileContentsEqual = function(test, actualFile, expectedFile, message) {
 
   var actual = grunt.file.read(actualFile);
   var expected = grunt.util.normalizelf(grunt.file.read(expectedFile));
+
+  var i, pos = null;
+  for (i = 0; i < expected.length - 1; i++) {
+    if (actual.charAt(i) !== expected.charAt(i)) {
+      pos = i;
+      break;
+    }
+  }
+  if (pos !== null) {
+    message += " at character " + i + ": " + strContext(actual, pos, 5);
+  }
+
   test.equal(actual, expected, message);
 };
 
@@ -42,6 +60,16 @@ exports.html2js = {
 
     assertFileContentsEqual(test, 'tmp/regex_in_template.js',
           'test/expected/regex_in_template.js',
+          'expected compiled template module');
+
+    test.done();
+  },
+  empty_attribute: function(test) {
+
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/empty_attribute.js',
+          'test/expected/empty_attribute.js',
           'expected compiled template module');
 
     test.done();

@@ -43,6 +43,11 @@ module.exports = function(grunt) {
         dest: 'tmp/compact_format_default_options.js'
       },
 
+      empty_attribute: {
+        src: ['test/fixtures/empty_attribute.tpl.html'],
+        dest: 'tmp/empty_attribute.js'
+      },
+
       files_object_default_options: {
         files: {
           'tmp/files_object_default_options_1.js': ['test/fixtures/one.tpl.html'],
