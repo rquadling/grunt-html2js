@@ -258,3 +258,5 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 0.2.8 Allow passing option to Jade templates (PR #46, thanks @NickClark)
 
 0.2.9 Support relative file names for Jade templates (PR #48, thanks @dvonlehman)
+
+0.3.0 Allow use strict in single mode (PR #58, thanks @mfeckie)
