@@ -176,6 +176,9 @@ module.exports = function(grunt) {
       var fileFooter = options.fileFooterString !== '' ? options.fileFooterString + '\n' : '';
       var bundle = "";
       var targetModule = f.module || options.module;
+      var indentString = options.indentString;
+      var quoteChar    = options.quoteChar;
+      var strict       = (options.useStrict) ? indentString + quoteChar + 'use strict' + quoteChar + ';\n' : '';
       // If options.module is a function, use that to get the targetModule
       if (grunt.util.kindOf(targetModule) === 'function') {
         targetModule = targetModule(f, target);
@@ -187,7 +190,7 @@ module.exports = function(grunt) {
 
       if (options.singleModule) {
         if (options.target === 'js') {
-          bundle = "angular.module('" + targetModule + "', []).run(['$templateCache', function($templateCache) {\n";
+          bundle = "angular.module('" + targetModule + "', []).run(['$templateCache', function($templateCache) {\n" + strict;
           modules += '\n}]);\n';
         } else if (options.target === 'coffee') {
           bundle = "angular.module('" + targetModule + "', []).run(['$templateCache', ($templateCache) ->\n";
