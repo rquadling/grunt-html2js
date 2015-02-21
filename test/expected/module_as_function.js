@@ -1,4 +1,4 @@
-angular.module('NAME_FROM_FUNCTION', ['../test/fixtures/one.tpl.html', '../test/fixtures/two.tpl.html']);
+angular.module("NAME_FROM_FUNCTION", ["../test/fixtures/one.tpl.html", "../test/fixtures/two.tpl.html"]);
 
 angular.module("../test/fixtures/one.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("../test/fixtures/one.tpl.html",

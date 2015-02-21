@@ -1,4 +1,4 @@
-angular.module('templates-rename', ['../test/fixtures/one.tpl', '../test/fixtures/two.tpl']);
+angular.module("templates-rename", ["../test/fixtures/one.tpl", "../test/fixtures/two.tpl"]);
 
 angular.module("../test/fixtures/one.tpl", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("../test/fixtures/one.tpl",

@@ -1,4 +1,4 @@
-angular.module('templates-process_function', ['../test/fixtures/process_function.tpl.html']);
+angular.module("templates-process_function", ["../test/fixtures/process_function.tpl.html"]);
 
 angular.module("../test/fixtures/process_function.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("../test/fixtures/process_function.tpl.html",

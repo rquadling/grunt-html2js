@@ -1,4 +1,4 @@
-angular.module('templates-double_quotes', ['../test/fixtures/four.tpl.html']);
+angular.module("templates-double_quotes", ["../test/fixtures/four.tpl.html"]);
 
 angular.module("../test/fixtures/four.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("../test/fixtures/four.tpl.html",

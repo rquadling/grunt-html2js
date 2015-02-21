@@ -1,4 +1,4 @@
-angular.module('templates-regex_in_template', ['../test/fixtures/pattern.tpl.html']);
+angular.module("templates-regex_in_template", ["../test/fixtures/pattern.tpl.html"]);
 
 angular.module("../test/fixtures/pattern.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("../test/fixtures/pattern.tpl.html",

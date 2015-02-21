@@ -1,4 +1,4 @@
-angular.module('my-custom-template-module', ['fixtures/one.tpl.html', 'fixtures/two.tpl.html']);
+angular.module("my-custom-template-module", ["fixtures/one.tpl.html", "fixtures/two.tpl.html"]);
 
 angular.module("fixtures/one.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("fixtures/one.tpl.html",
