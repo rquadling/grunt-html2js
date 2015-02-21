@@ -145,6 +145,8 @@ module.exports = function(grunt) {
 
     var counter = 0;
     var target = this.target;
+    var quoteChar = options.quoteChar;
+
     // generate a separate module
     this.files.forEach(function(f) {
 
@@ -158,7 +160,7 @@ module.exports = function(grunt) {
         if (grunt.util.kindOf(options.rename) === 'function') {
           moduleName = options.rename(moduleName);
         }
-        moduleNames.push("'" + moduleName + "'");
+        moduleNames.push(quoteChar + moduleName + quoteChar);
         if (options.target === 'js') {
           return compileTemplate(moduleName, filepath, options);
         } else if (options.target === 'coffee') {
@@ -177,7 +179,6 @@ module.exports = function(grunt) {
       var bundle = "";
       var targetModule = f.module || options.module;
       var indentString = options.indentString;
-      var quoteChar    = options.quoteChar;
       var strict       = (options.useStrict) ? indentString + quoteChar + 'use strict' + quoteChar + ';\n' : '';
       // If options.module is a function, use that to get the targetModule
       if (grunt.util.kindOf(targetModule) === 'function') {
@@ -190,15 +191,15 @@ module.exports = function(grunt) {
 
       if (options.singleModule) {
         if (options.target === 'js') {
-          bundle = "angular.module('" + targetModule + "', []).run(['$templateCache', function($templateCache) {\n" + strict;
+          bundle = "angular.module(" + quoteChar + targetModule + quoteChar + ", []).run([" + quoteChar + "$templateCache" + quoteChar + ", function($templateCache) {\n" + strict;
           modules += '\n}]);\n';
         } else if (options.target === 'coffee') {
-          bundle = "angular.module('" + targetModule + "', []).run(['$templateCache', ($templateCache) ->\n";
+          bundle = "angular.module(" + quoteChar + targetModule + quoteChar + ", []).run([" + quoteChar + "$templateCache" + quoteChar + ", ($templateCache) ->\n";
           modules += '\n])\n';
         }
       } else if (targetModule) {
         //Allow a 'no targetModule if module is null' option
-        bundle = "angular.module('" + targetModule + "', [" + moduleNames.join(', ') + "])";
+        bundle = "angular.module(" + quoteChar + targetModule + quoteChar + ", [" + moduleNames.join(', ') + "])";
         if (options.target === 'js') {
           bundle += ';';
         }
