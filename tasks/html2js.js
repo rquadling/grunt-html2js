@@ -139,7 +139,8 @@ module.exports = function(grunt) {
       htmlmin: {},
       process: false,
       jade: { pretty: true },
-      singleModule: false
+      singleModule: false,
+      watch: false
     });
 
     var counter = 0;
@@ -151,16 +152,12 @@ module.exports = function(grunt) {
       var chokidar = require('chokidar');
       var watcher = chokidar.watch(null,{
         persistent: true
-      });
-      watcher.on('change', function(path) {
-        console.log('File', path, 'has been changed');
+      }).on('change', function(path) {
         // invalidate cache
         fileCache[path] = null;
+        // regenerateModules
         files.forEach(generateModule);
-      })
-      watcher.on('add', function(path) {
-        console.log('File', path, 'has been added');
-      })
+      });
     }
 
     // generate a separate module
@@ -170,18 +167,16 @@ module.exports = function(grunt) {
       var moduleNames = [];
       var filePaths = f.src.filter(existsFilter)
       if (options.watch)
-        console.log("adding files")
         watcher.add(filePaths)
 
       var modules = filePaths.map(function(filepath) {
         var compiled;
 
         if (options.watch && (compiled = fileCache[filepath])) {
-          console.log("found file in cache", filepath)
+          // return compiled file contents from cache
           return compiled;
         }
 
-        console.log("not in cache", filepath)
         var moduleName = normalizePath(path.relative(options.base, filepath));
         if (grunt.util.kindOf(options.rename) === 'function') {
           moduleName = options.rename(moduleName);
@@ -195,8 +190,11 @@ module.exports = function(grunt) {
           grunt.fail.fatal('Unknow target "' + options.target + '" specified');
         }
 
-        if (options.watch)
+        if (options.watch) {
+          // store compiled file contents in cache
           fileCache[filepath] = compiled
+        }
+
         return compiled;
       });
 
@@ -238,9 +236,10 @@ module.exports = function(grunt) {
       }
       grunt.file.write(f.dest, grunt.util.normalizelf(fileHeader + bundle + modules + fileFooter));
     }
+
     this.files.forEach(generateModule)
+
     //Just have one output, so if we making thirty files it only does one line
-    console.log(fileCache)
     grunt.log.writeln("Successfully converted "+(""+counter).green +
                       " html templates to " + options.target + ".");
   });
