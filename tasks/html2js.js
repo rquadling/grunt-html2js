@@ -147,14 +147,12 @@ module.exports = function(grunt) {
     var target = this.target;
 
     if (options.watch) {
-      var files = this.files
-      var fileCache = {}
+      var files = this.files;
+      var fileCache = {};
       var chokidar = require('chokidar');
-      var watcher = chokidar.watch(null,{
-        persistent: true
-      }).on('change', function(path) {
+      var watcher = chokidar.watch().on('change', function(filepath) {
         // invalidate cache
-        fileCache[path] = null;
+        fileCache[filepath] = null;
         // regenerateModules
         files.forEach(generateModule);
       });
@@ -165,9 +163,11 @@ module.exports = function(grunt) {
 
       // f.dest must be a string or write will fail
       var moduleNames = [];
-      var filePaths = f.src.filter(existsFilter)
-      if (options.watch)
-        watcher.add(filePaths)
+      var filePaths = f.src.filter(existsFilter);
+
+      if (options.watch) {
+        watcher.add(filePaths);
+      }
 
       var modules = filePaths.map(function(filepath) {
         var compiled;
@@ -192,7 +192,7 @@ module.exports = function(grunt) {
 
         if (options.watch) {
           // store compiled file contents in cache
-          fileCache[filepath] = compiled
+          fileCache[filepath] = compiled;
         }
 
         return compiled;
@@ -237,7 +237,7 @@ module.exports = function(grunt) {
       grunt.file.write(f.dest, grunt.util.normalizelf(fileHeader + bundle + modules + fileFooter));
     }
 
-    this.files.forEach(generateModule)
+    this.files.forEach(generateModule);
 
     //Just have one output, so if we making thirty files it only does one line
     grunt.log.writeln("Successfully converted "+(""+counter).green +
