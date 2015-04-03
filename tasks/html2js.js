@@ -31,7 +31,6 @@ module.exports = function(grunt) {
 
   // Warn on and remove invalid source files (if nonull was set).
   var existsFilter = function(filepath) {
-
     if (!grunt.file.exists(filepath)) {
       grunt.log.warn('Source file "' + filepath + '" not found.');
       return false;
@@ -145,28 +144,60 @@ module.exports = function(grunt) {
 
     var counter = 0;
     var target = this.target;
+
+    if (options.watch) {
+      var files = this.files
+      var fileCache = {}
+      var chokidar = require('chokidar');
+      var watcher = chokidar.watch(null,{
+        persistent: true
+      });
+      watcher.on('change', function(path) {
+        console.log('File', path, 'has been changed');
+        // invalidate cache
+        fileCache[path] = null;
+        files.forEach(generateModule);
+      })
+      watcher.on('add', function(path) {
+        console.log('File', path, 'has been added');
+      })
+    }
+
     // generate a separate module
-    this.files.forEach(function(f) {
+    function generateModule(f) {
 
       // f.dest must be a string or write will fail
-
       var moduleNames = [];
+      var filePaths = f.src.filter(existsFilter)
+      if (options.watch)
+        console.log("adding files")
+        watcher.add(filePaths)
 
-      var modules = f.src.filter(existsFilter).map(function(filepath) {
+      var modules = filePaths.map(function(filepath) {
+        var compiled;
 
+        if (options.watch && (compiled = fileCache[filepath])) {
+          console.log("found file in cache", filepath)
+          return compiled;
+        }
+
+        console.log("not in cache", filepath)
         var moduleName = normalizePath(path.relative(options.base, filepath));
         if (grunt.util.kindOf(options.rename) === 'function') {
           moduleName = options.rename(moduleName);
         }
         moduleNames.push("'" + moduleName + "'");
         if (options.target === 'js') {
-          return compileTemplate(moduleName, filepath, options);
+          compiled = compileTemplate(moduleName, filepath, options);
         } else if (options.target === 'coffee') {
-          return compileCoffeeTemplate(moduleName, filepath, options);
+          compiled = compileCoffeeTemplate(moduleName, filepath, options);
         } else {
           grunt.fail.fatal('Unknow target "' + options.target + '" specified');
         }
 
+        if (options.watch)
+          fileCache[filepath] = compiled
+        return compiled;
       });
 
       counter += modules.length;
@@ -206,8 +237,10 @@ module.exports = function(grunt) {
         bundle += "\n\n";
       }
       grunt.file.write(f.dest, grunt.util.normalizelf(fileHeader + bundle + modules + fileFooter));
-    });
+    }
+    this.files.forEach(generateModule)
     //Just have one output, so if we making thirty files it only does one line
+    console.log(fileCache)
     grunt.log.writeln("Successfully converted "+(""+counter).green +
                       " html templates to " + options.target + ".");
   });
