@@ -194,6 +194,21 @@ Default value: `false`
 
 If set to true, will create a single wrapping module with a run block, instead of an individual module for each template file. Requres that the `module` option is not falsy.
 
+#### watch
+Type: `Boolean`
+Default value: `false`
+
+If set to true and used inconjunction with a long running/keep-alive process such as grunt-contrib-watch html2js will watch src files for changes and regenerate output to dest. It uses an internal cache so only the file that changes needs to be re-compliled. Useful for development process particularly if you have lots of jade templates. It is very similar to grunt-browserify's watch.
+
+N.B. If using grunt-watch you do not need to run the html2js task again on src changes as it watches internally for these. All you need to do is watch the destination file and live reload on change.
+
+```
+options: {
+  jade: {},
+  watch: true
+}
+```
+
 ### Jade support
 
 If template filename ends with `.jade` the task will automatically render file's content using [Jade](https://github.com/visionmedia/jade)
@@ -205,7 +220,7 @@ Options can be passed to Jade within a `jade` property in the plugin options.
 options: {
   jade: {
     //this prevents auto expansion of empty arguments
-    //e.g. "div(ui-view)" becomes "<div ui-view></div>" 
+    //e.g. "div(ui-view)" becomes "<div ui-view></div>"
     //     instead of "<div ui-view="ui-view"></div>"
     doctype: "html"
   }
