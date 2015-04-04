@@ -304,6 +304,31 @@ exports.html2js = {
 
     test.done();
   },
+  process_all_jade: function(test) {
+    test.expect(1);
+
+    // This test is run with options.watch on
+    // We need to edit a fixture file to make sure it is watched and re-compiled
+    var file2Change = 'test/fixtures/process_jade.jade';
+    var contents = grunt.file.read(file2Change);
+    var newContents = contents + "\n#watch test";
+
+    // Write edited fixture file
+    grunt.file.write(file2Change, grunt.util.normalizelf(newContents));
+
+    // wait for the watch-change to process
+    setTimeout(function(){
+        // Check re-compiled with changes were added
+        assertFileContentsEqual(test, 'tmp/process_all_jade.js',
+          'test/expected/process_all_jade_after_change.js',
+          'expected jade template to be processed with custom options');
+
+        //reset fixture file to original contents
+        grunt.file.write(file2Change, grunt.util.normalizelf(contents));
+        test.done();
+    } , 1000);
+
+  },
   single_module: function(test) {
     test.expect(1);
 

@@ -248,6 +248,15 @@ module.exports = function(grunt) {
         dest: 'tmp/process_jade_with_include.js'
       },
 
+      process_all_jade: {
+        options: {
+          jade: {},
+          watch: true
+        },
+        src: ['test/fixtures/*.jade'],
+        dest: 'tmp/process_all_jade.js'
+      },
+
       single_module: {
         options: {
           singleModule: true
