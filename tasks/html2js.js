@@ -170,6 +170,13 @@ module.exports = function(grunt) {
       }
 
       var modules = filePaths.map(function(filepath) {
+
+        var moduleName = normalizePath(path.relative(options.base, filepath));
+        if (grunt.util.kindOf(options.rename) === 'function') {
+          moduleName = options.rename(moduleName);
+        }
+        moduleNames.push("'" + moduleName + "'");
+
         var compiled;
 
         if (options.watch && (compiled = fileCache[filepath])) {
@@ -177,11 +184,6 @@ module.exports = function(grunt) {
           return compiled;
         }
 
-        var moduleName = normalizePath(path.relative(options.base, filepath));
-        if (grunt.util.kindOf(options.rename) === 'function') {
-          moduleName = options.rename(moduleName);
-        }
-        moduleNames.push("'" + moduleName + "'");
         if (options.target === 'js') {
           compiled = compileTemplate(moduleName, filepath, options);
         } else if (options.target === 'coffee') {
