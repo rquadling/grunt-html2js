@@ -277,3 +277,5 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 0.3.0 Allow use strict in single mode (PR #58, thanks @mfeckie)
 
 0.3.1 Add watch feature (PR #67, thanks @startswithaj)
+
+0.3.2 Update to stable chokidar (PR #68, thanks @paulmillr)
