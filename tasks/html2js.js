@@ -12,7 +12,6 @@ module.exports = function(grunt) {
 
   var path = require('path');
   var minify = require('html-minifier').minify;
-  var jade = require('jade');
 
   var escapeContent = function(content, quoteChar, indentString) {
     var bsRegexp = new RegExp('\\\\', 'g');
@@ -48,6 +47,7 @@ module.exports = function(grunt) {
   var getContent = function(filepath, options) {
     var content = grunt.file.read(filepath);
     if (isJadeTemplate(filepath)) {
+      var jade = require('jade');
       options.jade.filename = filepath;
       content = jade.render(content, options.jade);
     }
