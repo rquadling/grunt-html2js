@@ -347,5 +347,15 @@ exports.html2js = {
 
     test.done();
 
+  },
+  existing_module: function(test) {
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/existing_module.js',
+        'test/expected/existing_module.js',
+        'expected use of existing module');
+
+    test.done();
+
   }
 };
