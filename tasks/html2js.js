@@ -140,6 +140,7 @@ module.exports = function(grunt) {
       process: false,
       jade: { pretty: true },
       singleModule: false,
+      existingModule: false,
       watch: false
     });
 
@@ -219,12 +220,17 @@ module.exports = function(grunt) {
         throw new Error("When using singleModule: true be sure to specify a (target) module");
       }
 
+      if (options.existingModule && !options.singleModule) {
+        throw new Error("When using existingModule: true be sure to set singleModule: true");
+      }
+
       if (options.singleModule) {
+        var moduleSuffix = options.existingModule ? "" : ", []";
         if (options.target === 'js') {
-          bundle = "angular.module('" + targetModule + "', []).run(['$templateCache', function($templateCache) {\n" + strict;
+          bundle = "angular.module('" + targetModule + "'" + moduleSuffix + ").run(['$templateCache', function($templateCache) {\n" + strict;
           modules += '\n}]);\n';
         } else if (options.target === 'coffee') {
-          bundle = "angular.module('" + targetModule + "', []).run(['$templateCache', ($templateCache) ->\n";
+          bundle = "angular.module('" + targetModule + "'" + moduleSuffix + ").run(['$templateCache', ($templateCache) ->\n";
           modules += '\n])\n';
         }
       } else if (targetModule) {

@@ -272,6 +272,15 @@ module.exports = function(grunt) {
         },
         src: ['test/fixtures/one.tpl.html', 'test/fixtures/three.tpl.html'],
         dest: 'tmp/single_module.coffee'
+      },
+
+      existing_module: {
+        options: {
+          singleModule: true,
+          existingModule: true
+        },
+        src: ['test/fixtures/one.tpl.html', 'test/fixtures/three.tpl.html'],
+        dest: 'tmp/existing_module.js'
       }
     },
 

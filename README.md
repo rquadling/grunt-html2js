@@ -192,7 +192,13 @@ Option value can be one of:
 Type: `Boolean`
 Default value: `false`
 
-If set to true, will create a single wrapping module with a run block, instead of an individual module for each template file. Requres that the `module` option is not falsy.
+If set to true, will create a single wrapping module with a run block, instead of an individual module for each template file. Requires that the `module` option is not falsy.
+
+#### existingModule
+Type: `Boolean`
+Default value: `false`
+
+If set to true, will use an existing module with the name from `module`, instead of creating a new module. Requires that `singleModule` is not falsy.
 
 #### watch
 Type: `Boolean`
