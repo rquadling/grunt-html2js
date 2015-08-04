@@ -286,4 +286,6 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 0.3.2 Update to stable chokidar (PR #68, thanks @paulmillr)
 
-0.3.2 Fix dependency on jade (PR #72, thanks @mathewleon)
+0.3.3 Fix dependency on jade (PR #72, thanks @mathewleon)
+
+0.3.4 Add existingModule option (PR #75, thanks @Jandalf)
