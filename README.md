@@ -204,9 +204,28 @@ If set to true, will use an existing module with the name from `module`, instead
 Type: `Boolean`
 Default value: `false`
 
-If set to true and used inconjunction with a long running/keep-alive process such as grunt-contrib-watch html2js will watch src files for changes and regenerate output to dest. It uses an internal cache so only the file that changes needs to be re-compliled. Useful for development process particularly if you have lots of jade templates. It is very similar to grunt-browserify's watch.
+If set to true and used in conjunction with a long running/keep-alive process such as grunt-contrib-watch html2js will watch src files for changes and regenerate output to dest. It uses an internal cache so only the file that changes needs to be re-compliled. Useful for development process particularly if you have lots of jade templates. It is very similar to grunt-browserify's watch.
 
 N.B. If using grunt-watch you do not need to run the html2js task again on src changes as it watches internally for these. All you need to do is watch the destination file and live reload on change.
+
+#### amd
+Type: `Boolean`
+Default value: `false`
+
+If set to true, will wrap output in a define block so it is compatible with AMD module loaders such as RequireJS without requiring you to shim the module.
+
+#### amdPrefixString
+Type: `String`
+Default value: `define(['angular'], function(angular){\n`
+
+When `options.amd` is set to true, this is what will be prepended to the module to make it compatible with AMD module loaders.  Along with `amdSuffixString`, these two options should allow you to customize the way your AMD module is created.
+
+#### amdSuffixString
+Type: `String`
+Default Value: `});`
+
+When `options.amd` is set to true, this is what will be postpended to the module to make it compatible with AMD module loaders.  Along with `amdPrefixString`, these two options should allow you to customize the way your AMD module is created.
+
 
 ```
 options: {

@@ -281,6 +281,29 @@ module.exports = function(grunt) {
         },
         src: ['test/fixtures/one.tpl.html', 'test/fixtures/three.tpl.html'],
         dest: 'tmp/existing_module.js'
+      },
+      amd_module: {
+        options: {
+          amd: true
+        },
+        src: ['test/fixtures/one.tpl.html', 'test/fixtures/two.tpl.html'],
+        dest: 'tmp/amd_module.js'
+      },
+      amd_module_custom_prefix: {
+        options: {
+          amd: true,
+          amdPrefixString: "define(['ng'], function(angular){"
+        },
+        src: ['test/fixtures/one.tpl.html', 'test/fixtures/two.tpl.html'],
+        dest: 'tmp/amd_module_custom_prefix.js'
+      },
+      amd_module_custom_suffix: {
+        options: {
+          amd: true,
+          amdSuffixString: "}); //Custom!"
+        },
+        src: ['test/fixtures/one.tpl.html', 'test/fixtures/two.tpl.html'],
+        dest: 'tmp/amd_module_custom_suffix.js'
       }
     },
 

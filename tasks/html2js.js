@@ -141,7 +141,10 @@ module.exports = function(grunt) {
       jade: { pretty: true },
       singleModule: false,
       existingModule: false,
-      watch: false
+      watch: false,
+      amd: false,
+      amdPrefixString: "define(['angular'], function(angular){",
+      amdSuffixString: "});"
     });
 
     var counter = 0;
@@ -211,9 +214,16 @@ module.exports = function(grunt) {
       var indentString = options.indentString;
       var quoteChar    = options.quoteChar;
       var strict       = (options.useStrict) ? indentString + quoteChar + 'use strict' + quoteChar + ';\n' : '';
+      var amdPrefix = "";
+      var amdSuffix = "";
       // If options.module is a function, use that to get the targetModule
       if (grunt.util.kindOf(targetModule) === 'function') {
         targetModule = targetModule(f, target);
+      }
+
+      if (options.amd) {
+        amdPrefix = options.amdPrefixString;
+        amdSuffix = options.amdSuffixString;
       }
 
       if (!targetModule && options.singleModule) {
@@ -242,7 +252,7 @@ module.exports = function(grunt) {
 
         bundle += "\n\n";
       }
-      grunt.file.write(f.dest, grunt.util.normalizelf(fileHeader + bundle + modules + fileFooter));
+      grunt.file.write(f.dest, grunt.util.normalizelf(fileHeader + amdPrefix + bundle + modules + amdSuffix + fileFooter));
     }
 
     this.files.forEach(generateModule);
