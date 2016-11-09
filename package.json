@@ -32,10 +32,10 @@
     "test": "grunt test"
   },
   "devDependencies": {
-    "grunt-contrib-jshint": "~0.1.1",
-    "grunt-contrib-clean": "~0.4.0",
-    "grunt-contrib-nodeunit": "^0.3.3",
     "grunt": "~0.4.0",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-jshint": "~0.1.1",
+    "grunt-contrib-nodeunit": "^0.3.3",
     "grunt-conventional-changelog": "~1.0.0",
     "load-grunt-tasks": "~0.2.0"
   },
@@ -43,7 +43,8 @@
     "grunt": ">=0.4.0"
   },
   "optionalDependencies": {
-    "jade": "^1.3.1"
+    "jade": "^1.3.1",
+    "pug": "^2.0.0-beta6"
   },
   "keywords": [
     "gruntplugin"
