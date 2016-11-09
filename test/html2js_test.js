@@ -329,6 +329,57 @@ exports.html2js = {
         }, 1000);
 
     },
+    process_pug: function (test) {
+        test.expect(1);
+
+        assertFileContentsEqual(test, 'tmp/process_pug.js',
+            'test/expected/process_pug.js',
+            'expected pug template to be processed');
+
+        test.done();
+    },
+    process_pug_with_custom_options: function (test) {
+        test.expect(1);
+
+        assertFileContentsEqual(test, 'tmp/process_pug_custom.js',
+            'test/expected/process_pug_custom.js',
+            'expected pug template to be processed with custom options');
+
+        test.done();
+    },
+    process_pug_with_include: function (test) {
+        test.expect(1);
+        assertFileContentsEqual(test, 'tmp/process_pug_with_include.js',
+            'test/expected/process_pug_with_include.js',
+            'expected pug template to be processed with custom options');
+
+        test.done();
+    },
+    process_all_pug: function (test) {
+        test.expect(1);
+
+        // This test is run with options.watch on
+        // We need to edit a fixture file to make sure it is watched and re-compiled
+        var file2Change = 'test/fixtures/process_pug.pug';
+        var contents = grunt.file.read(file2Change);
+        var newContents = contents + "\n#watch test";
+
+        // Write edited fixture file
+        grunt.file.write(file2Change, grunt.util.normalizelf(newContents));
+
+        // wait for the watch-change to process
+        setTimeout(function () {
+            // Check re-compiled with changes were added
+            assertFileContentsEqual(test, 'tmp/process_all_pug.js',
+                'test/expected/process_all_pug_after_change.js',
+                'expected pug template to be processed with custom options');
+
+            //reset fixture file to original contents
+            grunt.file.write(file2Change, grunt.util.normalizelf(contents));
+            test.done();
+        }, 1500);
+
+    },
     single_module: function (test) {
         test.expect(1);
 
