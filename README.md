@@ -313,4 +313,4 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 0.3.6 Updates peer dependencies for Grunt 1.0 (PR #81)
 
-1.0.0 Added ability to render pug templates. (PR #83)
+0.4.6 Added ability to render pug templates. Maintains Backwards compatibility. (#83)
