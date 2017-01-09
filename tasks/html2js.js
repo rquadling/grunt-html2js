@@ -175,7 +175,13 @@ module.exports = function(grunt) {
 
       var modules = filePaths.map(function(filepath) {
 
-        var moduleName = normalizePath(path.relative(options.base, filepath));
+        var moduleName;
+        if (options.replace_base_with === undefined) {
+          moduleName = normalizePath(path.relative(options.base, filepath));
+        } else {
+          moduleName = filepath.replace(options.base, options.replace_base_with);
+        }
+
         if (grunt.util.kindOf(options.rename) === 'function') {
           moduleName = options.rename(moduleName);
         }
