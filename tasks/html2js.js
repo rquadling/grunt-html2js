@@ -193,7 +193,7 @@ module.exports = function(grunt) {
         } else if (options.target === 'coffee') {
           compiled = compileCoffeeTemplate(moduleName, filepath, options);
         } else {
-          grunt.fail.fatal('Unknow target "' + options.target + '" specified');
+          grunt.fail.fatal('Unknown target "' + options.target + '" specified');
         }
 
         if (options.watch) {
