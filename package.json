@@ -46,6 +46,6 @@
   ],
   "dependencies": {
     "chokidar": "^1.0.0",
-    "html-minifier": "~0.6.0"
+    "html-minifier": "~3.0.0"
   }
 }
