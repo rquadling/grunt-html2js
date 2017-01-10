@@ -176,6 +176,9 @@ options: {
 }
 ```
 
+In addition, the `customAttrCollapse` option is supported, allowing you to supply a regex that
+is used to match attribute names in which multiple whitespace will be collapsed to a single space.
+
 #### process:
 Type: `Object` or `Boolean` or `Function`
 Default value: `false`
