@@ -48,6 +48,16 @@ module.exports = function(grunt) {
         dest: 'tmp/empty_attribute.js'
       },
 
+      custom_attribute_collapse: {
+        src: ['test/fixtures/custom_attribute_collapse.tpl.html'],
+        dest: 'tmp/custom_attribute_collapse.js',
+        options: {
+          htmlmin: {
+            customAttrCollapse: /my-[a-z]*/
+          }
+        }
+      },
+
       files_object_default_options: {
         files: {
           'tmp/files_object_default_options_1.js': ['test/fixtures/one.tpl.html'],
