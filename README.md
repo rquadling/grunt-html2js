@@ -53,7 +53,7 @@ Assuming you concatenate the resulting file with the rest of your application co
 
 ```
 angular.module('main', ['templates-main'])
-  .config(['$routeProvider', function ($routeProvidear) {
+  .config(['$routeProvider', function ($routeProvider) {
     $routeProvider.when('/somepath', {
       templateUrl:'some/template.tpl.html',
 ```
