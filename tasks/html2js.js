@@ -205,6 +205,9 @@ module.exports = function(grunt) {
 
         return compiled;
       });
+      
+      // don't generate empty modules
+      if (!modules.length) { return; }
 
       counter += modules.length;
       modules  = modules.join('\n');
