@@ -114,7 +114,7 @@ options: { quoteChar: '\'' }
 
 to use single quotes, or any other odd quoting character you want
 
-#### indentString
+#### options.indentString
 Type: `String`
 Default value: `  `
 
@@ -144,7 +144,7 @@ If specified, this string  will get written at the end of the output
 file.  May be used in conjunction with `fileHeaderString` to wrap
 the output.
 
-#### useStrict:
+#### options.useStrict:
 Type: `Boolean`
 Default value: ``
 
@@ -155,7 +155,7 @@ module.  Useful for global strict jshint settings.
 options: { useStrict: true }
 ```
 
-#### htmlmin:
+#### options.htmlmin:
 Type: `Object`
 Default value: {}
 
@@ -191,7 +191,7 @@ Option value can be one of:
 2. an object that is passed as the second options argument to `grunt.template.process` (with the file content as the first argument)
 3.  `true` to call `grunt.template.process` with the content and no options
 
-#### singleModule
+#### options.singleModule
 Type: `Boolean`
 Default value: `false`
 
@@ -237,12 +237,18 @@ options: {
 }
 ```
 
+```
+options: { singleModule: true }
+```
+
 ### Jade support
 
 If template filename ends with `.jade` the task will automatically render file's content using [Jade](https://github.com/visionmedia/jade)
 then compile into JS.
 
 Options can be passed to Jade within a `jade` property in the plugin options.
+
+#### options.jade
 
 ```
 options: {

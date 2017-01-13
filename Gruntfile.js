@@ -276,7 +276,8 @@ module.exports = function(grunt) {
 
       single_module: {
         options: {
-          singleModule: true
+          singleModule: true,
+          useStrict: true
         },
         src: ['test/fixtures/one.tpl.html', 'test/fixtures/three.tpl.html'],
         dest: 'tmp/single_module.js'
