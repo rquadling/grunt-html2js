@@ -201,6 +201,11 @@ module.exports = function(grunt) {
         src: ['test/fixtures/one.tpl.html'],
         dest: 'tmp/strict_mode.js'
       },
+      
+      broken_newlines: {
+        src: ['test/fixtures/broken_newlines.tpl.html'],
+        dest: 'tmp/broken_newlines.js'
+      },
 
       htmlmin: {
         options: {
