@@ -1,8 +1,10 @@
 /*
  * grunt-html2js
- * https://github.com/karlgoldstein/grunt-html2js
+ * https://github.com/rquadling/grunt-html2js
  *
  * Copyright (c) 2013 Karl Goldstein
+ * Copyright (c) 2017 Richard Quadling
+ *
  * Licensed under the MIT license.
  */
 

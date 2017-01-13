@@ -1,23 +1,27 @@
 {
   "name": "grunt-html2js",
   "description": "Compiles AngularJS templates to JavaScript",
-  "version": "0.3.6",
-  "homepage": "https://github.com/karlgoldstein/grunt-html2js",
+  "version": "0.3.7",
+  "homepage": "https://github.com/rquadling/grunt-html2js",
   "author": {
     "name": "Karl Goldstein",
     "email": "karl.goldstein@gmail.com"
   },
+  "contributors": [{
+    "name": "Richard Quadling",
+    "email": "RQuadling@GMail.com"
+  }],
   "repository": {
     "type": "git",
-    "url": "https://github.com/karlgoldstein/grunt-html2js.git"
+    "url": "https://github.com/rquadling/grunt-html2js.git"
   },
   "bugs": {
-    "url": "https://github.com/karlgoldstein/grunt-html2js/issues"
+    "url": "https://github.com/rquadling/grunt-html2js/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/karlgoldstein/grunt-html2js/blob/master/LICENSE-MIT"
+      "url": "https://github.com/rquadling/grunt-html2js/blob/master/LICENSE-MIT"
     }
   ],
   "main": "Gruntfile.js",

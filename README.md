@@ -315,3 +315,5 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 0.3.5 Adds options to support AMD modules (PR #75, thanks @Southpaw17)
 
 0.3.6 Updates peer dependencies for Grunt 1.0 (PR #81)
+
+As of 0.3.7, this package is now administered by Richard Quadling who gives a big "Thank you" to Karl for his hard work.
