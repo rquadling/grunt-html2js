@@ -319,3 +319,5 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 0.3.7 Fix dependencies for htmlmin
 
 As of 0.3.7, this package is now administered by Richard Quadling who gives a big "Thank you" to Karl for his hard work.
+
+0.4.0 Added ability to render pug templates. Maintains Backwards compatibility. (#83)
