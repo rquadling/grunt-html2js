@@ -1,8 +1,10 @@
 /*
  * grunt-html2js
- * https://github.com/karlgoldstein/grunt-html2js
+ * https://github.com/rquadling/grunt-html2js
  *
  * Copyright (c) 2013 Karl Goldstein
+ * Copyright (c) 2017 Richard Quadling
+ *
  * Licensed under the MIT license.
  */
 
@@ -203,7 +205,7 @@ module.exports = function(grunt) {
         } else if (options.target === 'coffee') {
           compiled = compileCoffeeTemplate(moduleName, filepath, options);
         } else {
-          grunt.fail.fatal('Unknow target "' + options.target + '" specified');
+          grunt.fail.fatal('Unknown target "' + options.target + '" specified');
         }
 
         if (options.watch) {

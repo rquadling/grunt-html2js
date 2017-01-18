@@ -11,7 +11,7 @@ If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out th
 npm install grunt-html2js --save-dev
 ```
 
-One the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
+Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
 
 ```js
 grunt.loadNpmTasks('grunt-html2js');
@@ -53,7 +53,7 @@ Assuming you concatenate the resulting file with the rest of your application co
 
 ```
 angular.module('main', ['templates-main'])
-  .config(['$routeProvider', function ($routeProvidear) {
+  .config(['$routeProvider', function ($routeProvider) {
     $routeProvider.when('/somepath', {
       templateUrl:'some/template.tpl.html',
 ```
@@ -175,6 +175,9 @@ options: {
   }
 }
 ```
+
+In addition, the `customAttrCollapse` option is supported, allowing you to supply a regex that
+is used to match attribute names in which multiple whitespace will be collapsed to a single space.
 
 #### process:
 Type: `Object` or `Boolean` or `Function`
@@ -313,4 +316,8 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 0.3.6 Updates peer dependencies for Grunt 1.0 (PR #81)
 
-0.4.6 Added ability to render pug templates. Maintains Backwards compatibility. (#83)
+0.3.7 Fix dependencies for htmlmin
+
+As of 0.3.7, this package is now administered by Richard Quadling who gives a big "Thank you" to Karl for his hard work.
+
+0.4.0 Added ability to render pug templates. Maintains Backwards compatibility. (#83)

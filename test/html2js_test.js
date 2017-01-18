@@ -74,6 +74,26 @@ exports.html2js = {
 
         test.done();
     },
+    custom_attribute_collapsed: function (test) {
+
+        test.expect(1);
+
+        assertFileContentsEqual(test, 'tmp/custom_attribute_collapsed.js',
+            'test/expected/custom_attribute_collapsed.js',
+            'expected compiled template module');
+
+        test.done();
+    },
+    custom_attribute_not_collapsed: function (test) {
+
+        test.expect(1);
+
+        assertFileContentsEqual(test, 'tmp/custom_attribute_not_collapsed.js',
+            'test/expected/custom_attribute_not_collapsed.js',
+            'expected compiled template module');
+
+        test.done();
+    },
     compact_format_default_options: function (test) {
 
         test.expect(1);

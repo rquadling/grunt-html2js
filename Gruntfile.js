@@ -1,8 +1,10 @@
 /*
  * grunt-html2js
- * https://github.com/karlgoldstein/grunt-html2js
+ * https://github.com/rquadling/grunt-html2js
  *
  * Copyright (c) 2013 Karl Goldstein
+ * Copyright (c) 2017 Richard Quadling
+ *
  * Licensed under the MIT license.
  */
 
@@ -46,6 +48,21 @@ module.exports = function(grunt) {
       empty_attribute: {
         src: ['test/fixtures/empty_attribute.tpl.html'],
         dest: 'tmp/empty_attribute.js'
+      },
+
+      custom_attribute_collapsed: {
+        src: ['test/fixtures/custom_attribute_collapse.tpl.html'],
+        dest: 'tmp/custom_attribute_collapsed.js',
+        options: {
+          htmlmin: {
+            customAttrCollapse: /my-[a-z]*/
+          }
+        }
+      },
+
+      custom_attribute_not_collapsed: {
+        src: ['test/fixtures/custom_attribute_collapse.tpl.html'],
+        dest: 'tmp/custom_attribute_not_collapsed.js'
       },
 
       files_object_default_options: {
