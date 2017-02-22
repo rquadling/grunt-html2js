@@ -10,7 +10,7 @@
 
 'use strict';
 
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
   // Project configuration.
   grunt.initConfig({
@@ -45,10 +45,15 @@ module.exports = function(grunt) {
         dest: 'tmp/compact_format_default_options.js'
       },
 
-      empty_attribute: {
-        src: ['test/fixtures/empty_attribute.tpl.html'],
-        dest: 'tmp/empty_attribute.js'
+      broken_newlines: {
+        src: ['test/fixtures/broken_newlines.tpl.html'],
+        dest: 'tmp/broken_newlines.js'
       },
+
+        empty_attribute: {
+            src: ['test/fixtures/empty_attribute.tpl.html'],
+            dest: 'tmp/empty_attribute.js'
+        },
 
       custom_attribute_collapsed: {
         src: ['test/fixtures/custom_attribute_collapse.tpl.html'],
@@ -168,7 +173,7 @@ module.exports = function(grunt) {
 
       rename: {
         options: {
-          rename: function(moduleName) {
+          rename: function (moduleName) {
             return moduleName.replace('.html', '');
           }
         },
@@ -178,7 +183,7 @@ module.exports = function(grunt) {
 
       module_as_function: {
         options: {
-          module: function(file) {
+          module: function (file) {
             return "NAME_FROM_FUNCTION";
           }
         },
@@ -233,7 +238,7 @@ module.exports = function(grunt) {
 
       process_function: {
         options: {
-          process: function(html, filePath) {
+          process: function (html, filePath) {
             html = html.replace('(ONE)', '1');
             html = html.replace('(TWO)', '2');
             html = html.replace('(THREE)', '3');
