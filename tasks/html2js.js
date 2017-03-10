@@ -45,10 +45,10 @@ module.exports = function (grunt) {
         return jadeExtension.test(filepath);
     }
   
-  function isPugTemplate(filepath) {
-    var pugExtension = /\.pug$/;
-    return pugExtension.test(filepath);
-  }
+    function isPugTemplate(filepath) {
+        var pugExtension = /\.pug$/;
+        return pugExtension.test(filepath);
+    }
 
     // return template content
     var getContent = function (filepath, options) {
@@ -57,10 +57,10 @@ module.exports = function (grunt) {
             var jade = require('jade');
             options.jade.filename = filepath;
             content = jade.render(content, options.jade);
-    } else if (isPugTemplate(filepath)) {
-      var pug = require('pug');
-      options.pug.filename = filepath;
-      content = pug.render(content, options.pug);
+        } else if (isPugTemplate(filepath)) {
+            var pug = require('pug');
+            options.pug.filename = filepath;
+            content = pug.render(content, options.pug);
         }
 
         // Process files as templates if requested.
@@ -150,7 +150,7 @@ module.exports = function (grunt) {
             htmlmin: {},
             process: false,
             jade: {pretty: true},
-      pug: { pretty: true },
+            pug: { pretty: true },
             singleModule: false,
             existingModule: false,
             watch: false,
