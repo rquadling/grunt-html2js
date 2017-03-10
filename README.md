@@ -320,4 +320,6 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 As of 0.3.7, this package is now administered by Richard Quadling who gives a big "Thank you" to Karl for his hard work.
 
+0.3.8 Fix broken newlines (\r\r\n)
+
 0.4.0 Added ability to render pug templates. Maintains Backwards compatibility. (#83)

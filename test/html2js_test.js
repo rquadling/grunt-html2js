@@ -64,6 +64,15 @@ exports.html2js = {
 
         test.done();
     },
+    broken_newlines: function (test) {
+        test.expect(1);
+
+        assertFileContentsEqual(test, 'tmp/broken_newlines.js',
+            'test/expected/broken_newlines.js',
+            'expected correct newlines');
+
+        test.done();
+    },
     empty_attribute: function (test) {
 
         test.expect(1);
