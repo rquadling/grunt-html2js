@@ -279,6 +279,36 @@ module.exports = function (grunt) {
                 dest: 'tmp/process_all_jade.js'
             },
 
+            process_pug: {
+                src: ['test/fixtures/process_pug.pug'],
+                dest: 'tmp/process_pug.js'
+            },
+
+            process_pug_custom: {
+                options: {
+                    pug: {doctype: 'html'}
+                },
+                src: ['test/fixtures/process_pug_custom.pug'],
+                dest: 'tmp/process_pug_custom.js'
+            },
+
+            process_pug_with_include: {
+                options: {
+                  pug: {}
+                },
+                src: ['test/fixtures/process_pug_with_include.pug'],
+                dest: 'tmp/process_pug_with_include.js'
+            },
+
+            process_all_pug: {
+                options: {
+                  pug: {},
+                  watch: true
+                },
+                src: ['test/fixtures/*.pug'],
+                dest: 'tmp/process_all_pug.js'
+            },
+      
             single_module: {
                 options: {
                     singleModule: true
