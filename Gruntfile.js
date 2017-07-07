@@ -16,18 +16,18 @@ module.exports = function (grunt) {
     grunt.initConfig({
         jshint: {
             options: {
-                jshintrc: '.jshintrc',
+                jshintrc: '.jshintrc'
             },
             all: [
                 'Gruntfile.js',
                 'tasks/*.js',
-                '<%= nodeunit.tests %>',
+                '<%= nodeunit.tests %>'
             ]
         },
 
         // Before generating any new files, remove any previously-created files.
         clean: {
-            tests: ['tmp'],
+            tests: ['tmp']
         },
 
         // Configuration to be run (and then tested).
@@ -308,7 +308,7 @@ module.exports = function (grunt) {
                 src: ['test/fixtures/*.pug'],
                 dest: 'tmp/process_all_pug.js'
             },
-      
+
             single_module: {
                 options: {
                     singleModule: true

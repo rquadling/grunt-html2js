@@ -7,10 +7,12 @@
     "name": "Karl Goldstein",
     "email": "karl.goldstein@gmail.com"
   },
-  "contributors": [{
-    "name": "Richard Quadling",
-    "email": "RQuadling@GMail.com"
-  }],
+  "contributors": [
+    {
+      "name": "Richard Quadling",
+      "email": "RQuadling@GMail.com"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/rquadling/grunt-html2js.git"
