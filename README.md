@@ -255,6 +255,26 @@ options: {
 }
 ```
 
+*NOTE* Jade is now deprecated as of V0.4.0 and will be removed in V0.5.0
+
+### Pug support
+
+If template filename ends with `.pug` the task will automatically render file's content using [Pug](https://github.com/pugjs/pug)
+then compile into JS.
+
+Options can be passed to Pug within a `pug` property in the plugin options.
+
+```
+options: {
+  pug: {
+    //this prevents auto expansion of empty arguments
+    //e.g. "div(ui-view)" becomes "<div ui-view></div>"
+    //     instead of "<div ui-view="ui-view"></div>"
+    doctype: "html"
+  }
+}
+```
+
 ### Usage Examples
 
 See the `Gruntfile.js` in the project source code for various configuration examples.
@@ -323,3 +343,5 @@ As of 0.3.7, this package is now administered by Richard Quadling who gives a bi
 0.3.8 Fix broken newlines (\r\r\n)
 
 0.4.0 Added ability to render pug templates. Maintains Backwards compatibility. (#83)
+
+Marked support for jade templates as deprecated. Support will be removed in 0.5.0
