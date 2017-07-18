@@ -317,6 +317,15 @@ module.exports = function (grunt) {
                 dest: 'tmp/single_module.js'
             },
 
+            single_module_strict: {
+                options: {
+                      singleModule: true,
+                      useStrict: true
+                },
+                src: ['test/fixtures/one.tpl.html', 'test/fixtures/three.tpl.html'],
+                dest: 'tmp/single_module_strict.js'
+            },
+
             single_module_coffee: {
                 options: {
                     singleModule: true,

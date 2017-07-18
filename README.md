@@ -114,7 +114,7 @@ options: { quoteChar: '\'' }
 
 to use single quotes, or any other odd quoting character you want
 
-#### indentString
+#### options.indentString
 Type: `String`
 Default value: `  `
 
@@ -128,7 +128,7 @@ options: { indentString: '    ' }
 to get, for example, 4-space indents. Same goes for tabs or any other
 indent system you want to use.
 
-#### fileHeaderString:
+#### options.fileHeaderString:
 Type: `String`
 Default value: ``
 
@@ -136,7 +136,7 @@ If specified, this string  will get written at the top of the output
 Template.js file. As an example, jshint directives such as
 /* global angular: false */ can be put at the head of the file.
 
-#### fileFooterString:
+#### options.fileFooterString:
 Type: `String`
 Default value: ``
 
@@ -144,7 +144,7 @@ If specified, this string  will get written at the end of the output
 file.  May be used in conjunction with `fileHeaderString` to wrap
 the output.
 
-#### useStrict:
+#### options.useStrict:
 Type: `Boolean`
 Default value: ``
 
@@ -155,7 +155,7 @@ module.  Useful for global strict jshint settings.
 options: { useStrict: true }
 ```
 
-#### htmlmin:
+#### options.htmlmin:
 Type: `Object`
 Default value: {}
 
@@ -179,7 +179,7 @@ options: {
 In addition, the `customAttrCollapse` option is supported, allowing you to supply a regex that
 is used to match attribute names in which multiple whitespace will be collapsed to a single space.
 
-#### process:
+#### options.process:
 Type: `Object` or `Boolean` or `Function`
 Default value: `false`
 
@@ -191,19 +191,19 @@ Option value can be one of:
 2. an object that is passed as the second options argument to `grunt.template.process` (with the file content as the first argument)
 3.  `true` to call `grunt.template.process` with the content and no options
 
-#### singleModule
+#### options.singleModule
 Type: `Boolean`
 Default value: `false`
 
 If set to true, will create a single wrapping module with a run block, instead of an individual module for each template file. Requires that the `module` option is not falsy.
 
-#### existingModule
+#### options.existingModule
 Type: `Boolean`
 Default value: `false`
 
 If set to true, will use an existing module with the name from `module`, instead of creating a new module. Requires that `singleModule` is not falsy.
 
-#### watch
+#### options.watch
 Type: `Boolean`
 Default value: `false`
 
@@ -211,19 +211,19 @@ If set to true and used in conjunction with a long running/keep-alive process su
 
 N.B. If using grunt-watch you do not need to run the html2js task again on src changes as it watches internally for these. All you need to do is watch the destination file and live reload on change.
 
-#### amd
+#### options.amd
 Type: `Boolean`
 Default value: `false`
 
 If set to true, will wrap output in a define block so it is compatible with AMD module loaders such as RequireJS without requiring you to shim the module.
 
-#### amdPrefixString
+#### options.amdPrefixString
 Type: `String`
 Default value: `define(['angular'], function(angular){\n`
 
 When `options.amd` is set to true, this is what will be prepended to the module to make it compatible with AMD module loaders.  Along with `amdSuffixString`, these two options should allow you to customize the way your AMD module is created.
 
-#### amdSuffixString
+#### options.amdSuffixString
 Type: `String`
 Default Value: `});`
 
@@ -237,7 +237,9 @@ options: {
 }
 ```
 
-### Jade support
+### Jade Support
+
+#### options.jade
 
 If template filename ends with `.jade` the task will automatically render file's content using [Jade](https://github.com/visionmedia/jade)
 then compile into JS.
@@ -259,6 +261,8 @@ options: {
 
 ### Pug support
 
+#### options.pug
+
 If template filename ends with `.pug` the task will automatically render file's content using [Pug](https://github.com/pugjs/pug)
 then compile into JS.
 
@@ -275,7 +279,7 @@ options: {
 }
 ```
 
-#### templatePathInComment:
+#### options.templatePathInComment:
 Type: `Boolean`
 Default value: `false`
 

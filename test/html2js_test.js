@@ -422,6 +422,15 @@ exports.html2js = {
 
         test.done();
     },
+    single_module_strict: function (test) {
+        test.expect(1);
+
+        assertFileContentsEqual(test, 'tmp/single_module_strict.js',
+          'test/expected/single_module_strict.js',
+          'expected template with single strict module');
+
+        test.done();
+    },
     single_module_coffee: function (test) {
         test.expect(1);
 
