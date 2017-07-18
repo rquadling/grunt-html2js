@@ -363,6 +363,10 @@ module.exports = function (grunt) {
                 },
                 src: ['test/fixtures/three.tpl.html'],
                 dest: 'tmp/template_path_in_comment.js'
+            },
+            empty_module: {
+                src: [],
+                dest: 'tmp/empty_module.js'
             }
         },
 

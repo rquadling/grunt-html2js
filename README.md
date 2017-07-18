@@ -353,3 +353,5 @@ As of 0.3.7, this package is now administered by Richard Quadling who gives a bi
 Marked support for jade templates as deprecated. Support will be removed in 0.5.0
 
 0.4.1 Added ability to add an HTML comment to the templates (#9/#10)
+
+0.4.2 Empty modules not generated if no source files located (#55)

@@ -47,6 +47,10 @@ var assertFileContentsEqual = function (test, actualFile, expectedFile, message)
     test.equal(actual, expected, message);
 };
 
+var assertFileDoesNotExist = function (test, unexpectedFile, message) {
+    test.equal(false, grunt.file.exists(unexpectedFile), message);
+};
+
 exports.html2js = {
 
     setUp: function (done) {
@@ -473,5 +477,14 @@ exports.html2js = {
             'expected template path in comment');
 
         test.done();
+    },
+    empty_module: function(test) {
+        test.expect(1);
+
+        assertFileDoesNotExist(test, 'tmp/empty_module.js',
+          'test/expected/empty_module.js',
+          'expected empty module');
+
+      test.done();
     }
 };
