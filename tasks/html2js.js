@@ -15,7 +15,8 @@ module.exports = function (grunt) {
     var path = require('path');
     var minify = require('html-minifier').minify;
 
-    var escapeContent = function (content, quoteChar, indentString) {
+    var escapeContent = function (content, quoteChar, indentString, pathToAddAsComment) {
+        content = (pathToAddAsComment ? '<!-- template: ' + pathToAddAsComment + ' -->\n' : '') + content;
         var bsRegexp = new RegExp('\\\\', 'g');
         var quoteRegexp = new RegExp('\\' + quoteChar, 'g');
         var nlReplace = '\\n' + quoteChar + ' +\n' + indentString + indentString + quoteChar;
@@ -44,7 +45,7 @@ module.exports = function (grunt) {
         var jadeExtension = /\.jade$/;
         return jadeExtension.test(filepath);
     }
-  
+
     function isPugTemplate(filepath) {
         var pugExtension = /\.pug$/;
         return pugExtension.test(filepath);
@@ -85,7 +86,7 @@ module.exports = function (grunt) {
         // trim leading whitespace
         content = content.replace(/(^\s*)/g, '');
 
-        return escapeContent(content, options.quoteChar, options.indentString);
+        return escapeContent(content, options.quoteChar, options.indentString, options.templatePathInComment ? filepath : '');
     };
 
     // compile a template to an angular module
@@ -156,7 +157,8 @@ module.exports = function (grunt) {
             watch: false,
             amd: false,
             amdPrefixString: "define(['angular'], function(angular){",
-            amdSuffixString: "});"
+            amdSuffixString: "});",
+            templatePathInComment: false
         });
 
         var counter = 0;
@@ -269,7 +271,7 @@ module.exports = function (grunt) {
 
         this.files.forEach(generateModule);
 
-        //Just have one output, so if we making thirty files it only does one line
+        //Just have one output, so if we are making thirty files it only does one line
         grunt.log.writeln("Successfully converted " + ("" + counter).green +
             " html templates to " + options.target + ".");
     });

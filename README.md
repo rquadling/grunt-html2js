@@ -275,6 +275,12 @@ options: {
 }
 ```
 
+#### templatePathInComment:
+Type: `Boolean`
+Default value: `false`
+
+If specified, adds an HTML comment containing the template file path as a comment at the start of each template.
+
 ### Usage Examples
 
 See the `Gruntfile.js` in the project source code for various configuration examples.
@@ -345,3 +351,5 @@ As of 0.3.7, this package is now administered by Richard Quadling who gives a bi
 0.4.0 Added ability to render pug templates. Maintains Backwards compatibility. (#83)
 
 Marked support for jade templates as deprecated. Support will be removed in 0.5.0
+
+0.4.1 Added ability to add an HTML comment to the templates (#9/#10)

@@ -464,5 +464,14 @@ exports.html2js = {
             'expected use of amd module with custom suffix');
 
         test.done();
+    },
+    template_path_in_comment: function(test) {
+        test.expect(1);
+
+        assertFileContentsEqual(test, 'tmp/template_path_in_comment.js',
+            'test/expected/template_path_in_comment.js',
+            'expected template path in comment');
+
+        test.done();
     }
 };

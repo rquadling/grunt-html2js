@@ -356,6 +356,13 @@ module.exports = function (grunt) {
                 },
                 src: ['test/fixtures/one.tpl.html', 'test/fixtures/two.tpl.html'],
                 dest: 'tmp/amd_module_custom_suffix.js'
+            },
+            template_path_in_comment: {
+                options: {
+                    templatePathInComment: true
+                },
+                src: ['test/fixtures/three.tpl.html'],
+                dest: 'tmp/template_path_in_comment.js'
             }
         },
 
