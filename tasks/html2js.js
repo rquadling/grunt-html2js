@@ -183,7 +183,7 @@ module.exports = function (grunt) {
         if (grunt.util.kindOf(options.rename) === 'function') {
           moduleName = options.rename(moduleName);
         }
-        moduleNames.push('\'' + moduleName + '\'');
+        moduleNames.push(options.quoteChar + moduleName + options.quoteChar);
 
         var compiled;
 
@@ -246,15 +246,15 @@ module.exports = function (grunt) {
       if (options.singleModule) {
         var moduleSuffix = options.existingModule ? '' : ', []';
         if (options.target === 'js') {
-          bundle = 'angular.module(\'' + targetModule + '\'' + moduleSuffix + ').run([\'$templateCache\', function($templateCache) {\n' + strict;
+          bundle = 'angular.module(' + quoteChar + targetModule + quoteChar + moduleSuffix + ').run([' + quoteChar + '$templateCache' + quoteChar + ', function($templateCache) {\n' + strict;
           modules += '\n}]);\n';
         } else if (options.target === 'coffee') {
-          bundle = 'angular.module(\'' + targetModule + '\'' + moduleSuffix + ').run([\'$templateCache\', ($templateCache) ->\n';
+          bundle = 'angular.module(' + quoteChar + targetModule + quoteChar + moduleSuffix + ').run([' + quoteChar + '$templateCache' + quoteChar + ', ($templateCache) ->\n';
           modules += '\n])\n';
         }
       } else if (targetModule) {
         //Allow a 'no targetModule if module is null' option
-        bundle = 'angular.module(\'' + targetModule + '\', [' + moduleNames.join(', ') + '])';
+        bundle = 'angular.module(' + quoteChar + targetModule + quoteChar + ', [' + moduleNames.join(', ') + '])';
         if (options.target === 'js') {
           bundle += ';';
         }

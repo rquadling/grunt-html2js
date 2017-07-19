@@ -1,4 +1,4 @@
-angular.module('templates-single_module_strict', []).run(['$templateCache', function($templateCache) {
+angular.module("templates-single_module_strict", []).run(["$templateCache", function($templateCache) {
   "use strict";
   $templateCache.put("../test/fixtures/one.tpl.html",
     "1 2 3");

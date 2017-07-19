@@ -1,4 +1,4 @@
-angular.module('templates-process_all_pug', ['../test/fixtures/process_pug.pug', '../test/fixtures/process_pug_custom.pug', '../test/fixtures/process_pug_with_include.pug', '../test/fixtures/pug_include.pug']);
+angular.module("templates-process_all_pug", ["../test/fixtures/process_pug.pug", "../test/fixtures/process_pug_custom.pug", "../test/fixtures/process_pug_with_include.pug", "../test/fixtures/pug_include.pug"]);
 
 angular.module("../test/fixtures/process_pug.pug", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("../test/fixtures/process_pug.pug",

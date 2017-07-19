@@ -350,7 +350,8 @@ module.exports = function (grunt) {
       },
       amd_module: {
         options: {
-          amd: true
+          amd: true,
+          quoteChar: '\''
         },
         src: ['test/fixtures/one.tpl.html', 'test/fixtures/two.tpl.html'],
         dest: 'tmp/amd_module.js'

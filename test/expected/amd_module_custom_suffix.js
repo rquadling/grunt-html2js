@@ -1,4 +1,4 @@
-define(['angular'], function(angular){angular.module('templates-amd_module_custom_suffix', ['../test/fixtures/one.tpl.html', '../test/fixtures/two.tpl.html']);
+define(['angular'], function(angular){angular.module("templates-amd_module_custom_suffix", ["../test/fixtures/one.tpl.html", "../test/fixtures/two.tpl.html"]);
 
 angular.module("../test/fixtures/one.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("../test/fixtures/one.tpl.html",
