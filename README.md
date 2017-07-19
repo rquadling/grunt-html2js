@@ -8,7 +8,7 @@
 
 # grunt-html2js
 
-> Converts AngularJS templates to JavaScript
+Converts AngularJS templates to JavaScript
 
 ## Getting Started
 This plugin requires Grunt `~0.4.0`
