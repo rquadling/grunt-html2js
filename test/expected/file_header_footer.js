@@ -8,3 +8,5 @@ angular.module("../test/fixtures/three.tpl.html", []).run(["$templateCache", fun
     "Lines\n" +
     "");
 }]);
+
+/* Module End */

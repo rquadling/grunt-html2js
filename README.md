@@ -1,3 +1,11 @@
+[![Travis](https://img.shields.io/travis/rquadling/grunt-html2js.svg?style=plastic)](https://travis-ci.org/rquadling/grunt-html2js)
+[![Coveralls](https://img.shields.io/coveralls/rquadling/grunt-html2js.svg?style=plastic)](https://coveralls.io/github/rquadling/grunt-html2js)
+[![NPM](https://img.shields.io/npm/v/grunt-html2js.svg?style=plastic)](https://www.npmjs.com/package/grunt-html2js)
+[![NPM](https://img.shields.io/npm/dw/grunt-html2js.svg?style=plastic)](https://www.npmjs.com/package/grunt-html2js)
+[![NPM](https://img.shields.io/npm/dm/grunt-html2js.svg?style=plastic)](https://www.npmjs.com/package/grunt-html2js)
+[![NPM](https://img.shields.io/npm/dy/grunt-html2js.svg?style=plastic)](https://www.npmjs.com/package/grunt-html2js)
+[![NPM](https://img.shields.io/npm/dt/grunt-html2js.svg?style=plastic)](https://www.npmjs.com/package/grunt-html2js)
+
 # grunt-html2js
 
 > Converts AngularJS templates to JavaScript
@@ -5,7 +13,9 @@
 ## Getting Started
 This plugin requires Grunt `~0.4.0`
 
-If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
+If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started)
+guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins.
+Once you're familiar with that process, you may install this plugin with this command:
 
 ```shell
 npm install grunt-html2js --save-dev
@@ -21,19 +31,26 @@ grunt.loadNpmTasks('grunt-html2js');
 
 ### Overview
 
-Angular-JS normally loads templates lazily from the server as you reference them in your application (via `ng-include`, routing configuration or other mechanism).  Angular caches the source code for each template so that subsequent references do not require another server request.  However, if your application is divided into many small components, then the initial loading process may involve an unacceptably large number of additional server requests.
+Angular-JS normally loads templates lazily from the server as you reference them in your application (via `ng-include`, routing
+configuration or other mechanism).  Angular caches the source code for each template so that subsequent references do not require
+another server request.  However, if your application is divided into many small components, then the initial loading process may
+involve an unacceptably large number of additional server requests.
 
-This plugin converts a group of templates to JavaScript and assembles them into an Angular module that primes the cache directly when the module is loaded.  You can concatenate this module with your main application code so that Angular does not need to make any additional server requests to initialize the application.
+This plugin converts a group of templates to JavaScript and assembles them into an Angular module that primes the cache directly
+when the module is loaded.  You can concatenate this module with your main application code so that Angular does not need to make
+any additional server requests to initialize the application.
 
 Note that this plugin does *not* compile the templates.  It simply caches the template source code.
 
 ### Setup
 
-By default, this plugin assumes you are following the naming conventions and build pipeline of the [angular-app](https://github.com/angular-app/angular-app) demo application.
+By default, this plugin assumes you are following the naming conventions and build pipeline of the [angular-app](https://github.com/angular-app/angular-app)
+demo application.
 
 In your project's Gruntfile, add a section named `html2js` to the data object passed into `grunt.initConfig()`.
 
-This simplest configuration will assemble all templates in your src tree into a module named `templates-main`, and write the JavaScript source for the module to `tmp/template.js`:
+This simplest configuration will assemble all templates in your src tree into a module named `templates-main`, and write the
+JavaScript source for the module to `tmp/template.js`:
 
 ```js
 grunt.initConfig({
@@ -49,7 +66,8 @@ grunt.initConfig({
 })
 ```
 
-Assuming you concatenate the resulting file with the rest of your application code, you can then specify the module as a dependency in your code:
+Assuming you concatenate the resulting file with the rest of your application code, you can then specify the module as a
+dependency in your code:
 
 ```
 angular.module('main', ['templates-main'])
@@ -71,7 +89,9 @@ The `dest` property must be a string.  If it is an array, Grunt will fail when a
 Type: `String`
 Default value: `'src'`
 
-The prefix relative to the project directory that should be stripped from each template path to produce a module identifier for the template.  For example, a template located at `src/projects/projects.tpl.html` would be identified as just `projects/projects.tpl.html`.
+The prefix relative to the project directory that should be stripped from each template path to produce a module identifier for
+the template.  For example, a template located at `src/projects/projects.tpl.html` would be identified as just
+`projects/projects.tpl.html`.
 
 #### options.target
 Type: `String`
@@ -85,7 +105,8 @@ Default value: `templates-TARGET`
 
 The name of the parent Angular module for each set of templates.  Defaults to the task target prefixed by `templates-`.
 
-The value of this argument can be a string or a function.  The function should expect the module file path and grunt task name as arguments, and it should return the name to use for the parent Angular module.
+The value of this argument can be a string or a function.  The function should expect the module file path and grunt task name
+as arguments, and it should return the name to use for the parent Angular module.
 
 If no bundle module is desired, set this to false.
 
@@ -93,7 +114,9 @@ If no bundle module is desired, set this to false.
 Type: `Function`
 Default value: `none`
 
-A function that takes in the module identifier and returns the renamed module identifier to use instead for the template.  For example, a template located at `src/projects/projects.tpl.html` would be identified as `/src/projects/projects.tpl` with a rename function defined as:
+A function that takes in the module identifier and returns the renamed module identifier to use instead for the template. For
+example, a template located at `src/projects/projects.tpl.html` would be identified as `/src/projects/projects.tpl` with a
+rename function defined as:
 
 ```
 function (moduleName) {
@@ -188,76 +211,63 @@ Performs arbitrary processing on the template as part of the compilation process
 Option value can be one of:
 
 1. a function that accepts `content` and `filepath` as arguments, and returns the transformed content
-2. an object that is passed as the second options argument to `grunt.template.process` (with the file content as the first argument)
-3.  `true` to call `grunt.template.process` with the content and no options
+2. an object that is passed as the second options argument to `grunt.template.process` (with the file content as the first
+   argument)
+3. `true` to call `grunt.template.process` with the content and no options
 
 #### options.singleModule
 Type: `Boolean`
 Default value: `false`
 
-If set to true, will create a single wrapping module with a run block, instead of an individual module for each template file. Requires that the `module` option is not falsy.
+If set to true, will create a single wrapping module with a run block, instead of an individual module for each template file.
+Requires that the `module` option is not falsy.
 
 #### options.existingModule
 Type: `Boolean`
 Default value: `false`
 
-If set to true, will use an existing module with the name from `module`, instead of creating a new module. Requires that `singleModule` is not falsy.
+If set to true, will use an existing module with the name from `module`, instead of creating a new module. Requires that
+`singleModule` is not falsy.
 
 #### options.watch
 Type: `Boolean`
 Default value: `false`
 
-If set to true and used in conjunction with a long running/keep-alive process such as grunt-contrib-watch html2js will watch src files for changes and regenerate output to dest. It uses an internal cache so only the file that changes needs to be re-compliled. Useful for development process particularly if you have lots of jade templates. It is very similar to grunt-browserify's watch.
+If set to true and used in conjunction with a long running/keep-alive process such as grunt-contrib-watch html2js will watch src
+files for changes and regenerate output to dest. It uses an internal cache so only the file that changes needs to be
+re-compliled. Useful for development process particularly if you have lots of pug templates. It is very similar to
+grunt-browserify's watch.
 
-N.B. If using grunt-watch you do not need to run the html2js task again on src changes as it watches internally for these. All you need to do is watch the destination file and live reload on change.
+```
+options: {
+  pug: {},
+  watch: true
+}
+```
+
+N.B. If using grunt-watch you do not need to run the html2js task again on src changes as it watches internally for these. All
+you need to do is watch the destination file and live reload on change.
 
 #### options.amd
 Type: `Boolean`
 Default value: `false`
 
-If set to true, will wrap output in a define block so it is compatible with AMD module loaders such as RequireJS without requiring you to shim the module.
+If set to true, will wrap output in a define block so it is compatible with AMD module loaders such as RequireJS without
+requiring you to shim the module.
 
 #### options.amdPrefixString
 Type: `String`
 Default value: `define(['angular'], function(angular){\n`
 
-When `options.amd` is set to true, this is what will be prepended to the module to make it compatible with AMD module loaders.  Along with `amdSuffixString`, these two options should allow you to customize the way your AMD module is created.
+When `options.amd` is set to true, this is what will be prepended to the module to make it compatible with AMD module loaders.
+Along with `amdSuffixString`, these two options should allow you to customize the way your AMD module is created.
 
 #### options.amdSuffixString
 Type: `String`
 Default Value: `});`
 
-When `options.amd` is set to true, this is what will be postpended to the module to make it compatible with AMD module loaders.  Along with `amdPrefixString`, these two options should allow you to customize the way your AMD module is created.
-
-
-```
-options: {
-  jade: {},
-  watch: true
-}
-```
-
-### Jade Support
-
-#### options.jade
-
-If template filename ends with `.jade` the task will automatically render file's content using [Jade](https://github.com/visionmedia/jade)
-then compile into JS.
-
-Options can be passed to Jade within a `jade` property in the plugin options.
-
-```
-options: {
-  jade: {
-    //this prevents auto expansion of empty arguments
-    //e.g. "div(ui-view)" becomes "<div ui-view></div>"
-    //     instead of "<div ui-view="ui-view"></div>"
-    doctype: "html"
-  }
-}
-```
-
-*NOTE* Jade is now deprecated as of V0.4.0 and will be removed in V0.5.0
+When `options.amd` is set to true, this is what will be postpended to the module to make it compatible with AMD module loaders.
+Along with `amdPrefixString`, these two options should allow you to customize the way your AMD module is created.
 
 ### Pug support
 
@@ -290,7 +300,8 @@ If specified, adds an HTML comment containing the template file path as a commen
 See the `Gruntfile.js` in the project source code for various configuration examples.
 
 ## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
+In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed
+functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
 
@@ -353,9 +364,13 @@ As of 0.3.7, this package is now administered by Richard Quadling who gives a bi
 0.3.8 Fix broken newlines (\r\r\n)
 
 0.4.0 Added ability to render pug templates. Maintains Backwards compatibility. (#83)
-
-Marked support for jade templates as deprecated. Support will be removed in 0.5.0
+      Marked support for jade templates as deprecated. Support will be removed in 0.5.0
 
 0.4.1 Added ability to add an HTML comment to the templates (#9/#10)
 
 0.4.2 Empty modules not generated if no source files located (#55)
+
+0.5.0 Introduce Travis CI for unit tests and code coverage.
+      Removed support for Jade.
+      Added badges.
+      Reformatted code and README.md.

@@ -1,5 +1,3 @@
-/* Module Start */
-
 angular.module('templates-file_header', ['../test/fixtures/three.tpl.html']);
 
 angular.module("../test/fixtures/three.tpl.html", []).run(["$templateCache", function($templateCache) {
@@ -8,3 +6,5 @@ angular.module("../test/fixtures/three.tpl.html", []).run(["$templateCache", fun
     "Lines\n" +
     "");
 }]);
+
+/* Module End */
