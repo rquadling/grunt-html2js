@@ -374,3 +374,5 @@ As of 0.3.7, this package is now administered by Richard Quadling who gives a bi
       Removed support for Jade.
       Added badges.
       Reformatted code and README.md.
+
+0.5.1 Fix options.quoteChar usage for module header (#64)
