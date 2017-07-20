@@ -58,348 +58,6 @@ exports.html2js = {
     done();
   },
 
-  regex_in_template: function (test) {
-
-    test.expect(1);
-
-    assertFileContentsEqual(test, 'tmp/regex_in_template.js',
-      'test/expected/regex_in_template.js',
-      'expected compiled template module');
-
-    test.done();
-  },
-  broken_newlines: function (test) {
-    test.expect(1);
-
-    assertFileContentsEqual(test, 'tmp/broken_newlines.js',
-      'test/expected/broken_newlines.js',
-      'expected correct newlines');
-
-    test.done();
-  },
-  empty_attribute: function (test) {
-
-    test.expect(1);
-
-    assertFileContentsEqual(test, 'tmp/empty_attribute.js',
-      'test/expected/empty_attribute.js',
-      'expected compiled template module');
-
-    test.done();
-  },
-  custom_attribute_collapsed: function (test) {
-
-    test.expect(1);
-
-    assertFileContentsEqual(test, 'tmp/custom_attribute_collapsed.js',
-      'test/expected/custom_attribute_collapsed.js',
-      'expected compiled template module');
-
-    test.done();
-  },
-  custom_attribute_not_collapsed: function (test) {
-
-    test.expect(1);
-
-    assertFileContentsEqual(test, 'tmp/custom_attribute_not_collapsed.js',
-      'test/expected/custom_attribute_not_collapsed.js',
-      'expected compiled template module');
-
-    test.done();
-  },
-  compact_format_default_options: function (test) {
-
-    test.expect(1);
-
-    assertFileContentsEqual(test, 'tmp/compact_format_default_options.js',
-      'test/expected/compact_format_default_options.js',
-      'expected compiled template module');
-
-    test.done();
-  },
-  files_object_default_options: function (test) {
-
-    test.expect(2);
-
-    assertFileContentsEqual(test, 'tmp/files_object_default_options_1.js',
-      'test/expected/files_object_default_options_1.js',
-      'expected compiled template module');
-
-    assertFileContentsEqual(test, 'tmp/files_object_default_options_2.js',
-      'test/expected/files_object_default_options_2.js',
-      'expected compiled template module');
-
-    test.done();
-  },
-  files_array_default_options: function (test) {
-
-    test.expect(2);
-
-    assertFileContentsEqual(test, 'tmp/files_array_default_options_1.js',
-      'test/expected/files_array_default_options_1.js',
-      'expected compiled template module');
-
-    assertFileContentsEqual(test, 'tmp/files_array_default_options_2.js',
-      'test/expected/files_array_default_options_2.js',
-      'expected compiled template module');
-
-    test.done();
-  },
-  compact_format_custom_options: function (test) {
-
-    test.expect(1);
-
-    assertFileContentsEqual(test, 'tmp/compact_format_custom_options.js',
-      'test/expected/compact_format_custom_options.js',
-      'expected compiled template module');
-
-    test.done();
-  },
-  files_object_custom_options: function (test) {
-
-    test.expect(2);
-
-    assertFileContentsEqual(test, 'tmp/files_object_custom_options_1.js',
-      'test/expected/files_object_custom_options_1.js',
-      'expected compiled template module');
-
-    assertFileContentsEqual(test, 'tmp/files_object_custom_options_2.js',
-      'test/expected/files_object_custom_options_2.js',
-      'expected compiled template module');
-
-    test.done();
-  },
-  files_array_custom_options: function (test) {
-
-    test.expect(2);
-
-    assertFileContentsEqual(test, 'tmp/files_array_custom_options_1.js',
-      'test/expected/files_array_custom_options_1.js',
-      'expected compiled template module');
-
-    assertFileContentsEqual(test, 'tmp/files_array_custom_options_2.js',
-      'test/expected/files_array_custom_options_2.js',
-      'expected compiled template module');
-
-    test.done();
-  },
-  multi_lines: function (test) {
-
-    test.expect(1);
-
-    assertFileContentsEqual(test, 'tmp/multi_lines.js',
-      'test/expected/multi_lines.js',
-      'expected compiled template module');
-
-    test.done();
-  },
-  multi_lines_4spaces: function (test) {
-
-    test.expect(1);
-
-    assertFileContentsEqual(test, 'tmp/multi_lines_4spaces.js',
-      'test/expected/multi_lines_4spaces.js',
-      'expected compiled template module');
-
-    test.done();
-  },
-  multi_lines_tabs: function (test) {
-
-    test.expect(1);
-
-    assertFileContentsEqual(test, 'tmp/multi_lines_tabs.js',
-      'test/expected/multi_lines_tabs.js',
-      'expected compiled template module');
-
-    test.done();
-  },
-  double_quotes: function (test) {
-
-    test.expect(1);
-
-    assertFileContentsEqual(test, 'tmp/double_quotes.js',
-      'test/expected/double_quotes.js',
-      'expected compiled template module');
-
-    test.done();
-  },
-  single_quotes: function (test) {
-
-    test.expect(1);
-
-    assertFileContentsEqual(test, 'tmp/single_quotes.js',
-      'test/expected/single_quotes.js',
-      'expected compiled template module');
-
-    test.done();
-  },
-  file_header: function (test) {
-
-    test.expect(1);
-
-    assertFileContentsEqual(test, 'tmp/file_header.js',
-      'test/expected/file_header.js',
-      'expected compiled template module');
-
-    test.done();
-  },
-  rename: function (test) {
-
-    test.expect(1);
-
-    assertFileContentsEqual(test, 'tmp/rename.js',
-      'test/expected/rename.js',
-      'expected compiled template module');
-
-    test.done();
-  },
-  module_as_function: function (test) {
-
-    test.expect(1);
-
-    assertFileContentsEqual(test, 'tmp/module_as_function.js',
-      'test/expected/module_as_function.js',
-      'expected compiled template module');
-
-    test.done();
-  },
-  coffee: function (test) {
-
-    test.expect(1);
-
-    assertFileContentsEqual(test, 'tmp/coffee.coffee',
-      'test/expected/coffee.coffee',
-      'expected compiled template module');
-
-    test.done();
-  },
-  strict_mode: function (test) {
-
-    test.expect(1);
-
-    assertFileContentsEqual(test, 'tmp/strict_mode.js',
-      'test/expected/strict_mode.js',
-      'expected strict mode in templates');
-
-    test.done();
-  },
-  htmlmin: function (test) {
-
-    test.expect(1);
-
-    assertFileContentsEqual(test, 'tmp/htmlmin.js',
-      'test/expected/htmlmin.js',
-      'expected minified template');
-
-    test.done();
-  },
-  process_template: function (test) {
-    test.expect(1);
-
-    assertFileContentsEqual(test, 'tmp/process_template.js',
-      'test/expected/process_template.js',
-      'expected grunt templates to be processed');
-
-    test.done();
-  },
-  process_function: function (test) {
-    test.expect(1);
-
-    assertFileContentsEqual(test, 'tmp/process_function.js',
-      'test/expected/process_function.js',
-      'expected grunt templates to be processed by a custom function');
-
-    test.done();
-  },
-  process_pug: function (test) {
-    test.expect(1);
-
-    assertFileContentsEqual(test, 'tmp/process_pug.js',
-      'test/expected/process_pug.js',
-      'expected pug template to be processed');
-
-    test.done();
-  },
-  process_pug_with_custom_options: function (test) {
-    test.expect(1);
-
-    assertFileContentsEqual(test, 'tmp/process_pug_custom.js',
-      'test/expected/process_pug_custom.js',
-      'expected pug template to be processed with custom options');
-
-    test.done();
-  },
-  process_pug_with_include: function (test) {
-    test.expect(1);
-    assertFileContentsEqual(test, 'tmp/process_pug_with_include.js',
-      'test/expected/process_pug_with_include.js',
-      'expected pug template to be processed with custom options');
-
-    test.done();
-  },
-  process_all_pug: function (test) {
-    test.expect(1);
-
-    // This test is run with options.watch on
-    // We need to edit a fixture file to make sure it is watched and re-compiled
-    var file2Change = 'test/fixtures/process_pug.pug';
-    var contents = grunt.file.read(file2Change);
-    var newContents = contents + '\n#watch test';
-
-    // Write edited fixture file
-    grunt.file.write(file2Change, grunt.util.normalizelf(newContents));
-
-    // wait for the watch-change to process
-    setTimeout(function () {
-      // Check re-compiled with changes were added
-      assertFileContentsEqual(test, 'tmp/process_all_pug.js',
-        'test/expected/process_all_pug_after_change.js',
-        'expected pug template to be processed with custom options');
-
-      //reset fixture file to original contents
-      grunt.file.write(file2Change, grunt.util.normalizelf(contents));
-      test.done();
-    }, 1500);
-
-  },
-  single_module: function (test) {
-    test.expect(1);
-
-    assertFileContentsEqual(test, 'tmp/single_module.js',
-      'test/expected/single_module.js',
-      'expected template with single module');
-
-    test.done();
-  },
-  single_module_strict: function (test) {
-    test.expect(1);
-
-    assertFileContentsEqual(test, 'tmp/single_module_strict.js',
-      'test/expected/single_module_strict.js',
-      'expected template with single strict module');
-
-    test.done();
-  },
-  single_module_coffee: function (test) {
-    test.expect(1);
-
-    assertFileContentsEqual(test, 'tmp/single_module.coffee',
-      'test/expected/single_module.coffee',
-      'expected coffee template with single module');
-
-    test.done();
-
-  },
-  existing_module: function (test) {
-    test.expect(1);
-
-    assertFileContentsEqual(test, 'tmp/existing_module.js',
-      'test/expected/existing_module.js',
-      'expected use of existing module');
-
-    test.done();
-
-  },
   amd_module: function (test) {
     test.expect(1);
 
@@ -427,12 +85,76 @@ exports.html2js = {
 
     test.done();
   },
-  template_path_in_comment: function (test) {
+  broken_newlines: function (test) {
     test.expect(1);
 
-    assertFileContentsEqual(test, 'tmp/template_path_in_comment.js',
-      'test/expected/template_path_in_comment.js',
-      'expected template path in comment');
+    assertFileContentsEqual(test, 'tmp/broken_newlines.js',
+      'test/expected/broken_newlines.js',
+      'expected correct newlines');
+
+    test.done();
+  },
+  coffee: function (test) {
+
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/coffee.coffee',
+      'test/expected/coffee.coffee',
+      'expected compiled template module');
+
+    test.done();
+  },
+  compact_format_custom_options: function (test) {
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/compact_format_custom_options.js',
+      'test/expected/compact_format_custom_options.js',
+      'expected compiled template module');
+
+    test.done();
+  },
+  compact_format_default_options: function (test) {
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/compact_format_default_options.js',
+      'test/expected/compact_format_default_options.js',
+      'expected compiled template module');
+
+    test.done();
+  },
+  custom_attribute_collapsed: function (test) {
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/custom_attribute_collapsed.js',
+      'test/expected/custom_attribute_collapsed.js',
+      'expected compiled template module');
+
+    test.done();
+  },
+  custom_attribute_not_collapsed: function (test) {
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/custom_attribute_not_collapsed.js',
+      'test/expected/custom_attribute_not_collapsed.js',
+      'expected compiled template module');
+
+    test.done();
+  },
+  double_quotes: function (test) {
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/double_quotes.js',
+      'test/expected/double_quotes.js',
+      'expected compiled template module');
+
+    test.done();
+  },
+  empty_attribute: function (test) {
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/empty_attribute.js',
+      'test/expected/empty_attribute.js',
+      'expected compiled template module');
 
     test.done();
   },
@@ -442,6 +164,281 @@ exports.html2js = {
     assertFileDoesNotExist(test, 'tmp/empty_module.js',
       'test/expected/empty_module.js',
       'expected empty module');
+
+    test.done();
+  },
+  existing_module: function (test) {
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/existing_module.js',
+      'test/expected/existing_module.js',
+      'expected use of existing module');
+
+    test.done();
+
+  },
+  file_footer: function (test) {
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/file_footer.js',
+      'test/expected/file_footer.js',
+      'expected compiled template module with footer');
+
+    test.done();
+  },
+  file_header: function (test) {
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/file_header.js',
+      'test/expected/file_header.js',
+      'expected compiled template module with header');
+
+    test.done();
+  },
+  file_header_footer: function (test) {
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/file_header_footer.js',
+      'test/expected/file_header_footer.js',
+      'expected compiled template module with header and footer');
+
+    test.done();
+  },
+  files_array_custom_options: function (test) {
+    test.expect(2);
+
+    assertFileContentsEqual(test, 'tmp/files_array_custom_options_1.js',
+      'test/expected/files_array_custom_options_1.js',
+      'expected compiled template module');
+
+    assertFileContentsEqual(test, 'tmp/files_array_custom_options_2.js',
+      'test/expected/files_array_custom_options_2.js',
+      'expected compiled template module');
+
+    test.done();
+  },
+  files_array_default_options: function (test) {
+    test.expect(2);
+
+    assertFileContentsEqual(test, 'tmp/files_array_default_options_1.js',
+      'test/expected/files_array_default_options_1.js',
+      'expected compiled template module');
+
+    assertFileContentsEqual(test, 'tmp/files_array_default_options_2.js',
+      'test/expected/files_array_default_options_2.js',
+      'expected compiled template module');
+
+    test.done();
+  },
+  files_object_custom_options: function (test) {
+    test.expect(2);
+
+    assertFileContentsEqual(test, 'tmp/files_object_custom_options_1.js',
+      'test/expected/files_object_custom_options_1.js',
+      'expected compiled template module');
+
+    assertFileContentsEqual(test, 'tmp/files_object_custom_options_2.js',
+      'test/expected/files_object_custom_options_2.js',
+      'expected compiled template module');
+
+    test.done();
+  },
+  files_object_default_options: function (test) {
+    test.expect(2);
+
+    assertFileContentsEqual(test, 'tmp/files_object_default_options_1.js',
+      'test/expected/files_object_default_options_1.js',
+      'expected compiled template module');
+
+    assertFileContentsEqual(test, 'tmp/files_object_default_options_2.js',
+      'test/expected/files_object_default_options_2.js',
+      'expected compiled template module');
+
+    test.done();
+  },
+  htmlmin: function (test) {
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/htmlmin.js',
+      'test/expected/htmlmin.js',
+      'expected minified template');
+
+    test.done();
+  },
+  module_as_function: function (test) {
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/module_as_function.js',
+      'test/expected/module_as_function.js',
+      'expected compiled template module');
+
+    test.done();
+  },
+  multi_lines: function (test) {
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/multi_lines.js',
+      'test/expected/multi_lines.js',
+      'expected compiled template module');
+
+    test.done();
+  },
+  multi_lines_4spaces: function (test) {
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/multi_lines_4spaces.js',
+      'test/expected/multi_lines_4spaces.js',
+      'expected compiled template module');
+
+    test.done();
+  },
+  multi_lines_tabs: function (test) {
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/multi_lines_tabs.js',
+      'test/expected/multi_lines_tabs.js',
+      'expected compiled template module');
+
+    test.done();
+  },
+  process_all_pug: function (test) {
+    test.expect(1);
+
+    // This test is run with options.watch on
+    // We need to edit a fixture file to make sure it is watched and re-compiled
+    var file2Change = 'test/fixtures/process_pug.pug';
+    var contents = grunt.file.read(file2Change);
+    var newContents = contents + '\n#watch test';
+
+    // Write edited fixture file
+    grunt.file.write(file2Change, grunt.util.normalizelf(newContents));
+
+    // wait for the watch-change to process
+    setTimeout(function () {
+      // Check re-compiled with changes were added
+      assertFileContentsEqual(test, 'tmp/process_all_pug.js',
+        'test/expected/process_all_pug_after_change.js',
+        'expected pug template to be processed with custom options');
+
+      //reset fixture file to original contents
+      grunt.file.write(file2Change, grunt.util.normalizelf(contents));
+      test.done();
+    }, 1500);
+  },
+  process_function: function (test) {
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/process_function.js',
+      'test/expected/process_function.js',
+      'expected grunt templates to be processed by a custom function');
+
+    test.done();
+  },
+  process_pug: function (test) {
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/process_pug.js',
+      'test/expected/process_pug.js',
+      'expected pug template to be processed');
+
+    test.done();
+  },
+  process_pug_custom: function (test) {
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/process_pug_custom.js',
+      'test/expected/process_pug_custom.js',
+      'expected pug template to be processed with custom options');
+
+    test.done();
+  },
+  process_pug_with_include: function (test) {
+    test.expect(1);
+    assertFileContentsEqual(test, 'tmp/process_pug_with_include.js',
+      'test/expected/process_pug_with_include.js',
+      'expected pug template to be processed with custom options');
+
+    test.done();
+  },
+  process_template: function (test) {
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/process_template.js',
+      'test/expected/process_template.js',
+      'expected grunt templates to be processed');
+
+    test.done();
+  },
+  regex_in_template: function (test) {
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/regex_in_template.js',
+      'test/expected/regex_in_template.js',
+      'expected compiled template module');
+
+    test.done();
+  },
+  rename: function (test) {
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/rename.js',
+      'test/expected/rename.js',
+      'expected compiled template module');
+
+    test.done();
+  },
+  single_module: function (test) {
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/single_module.js',
+      'test/expected/single_module.js',
+      'expected template with single module');
+
+    test.done();
+  },
+  single_module_coffee: function (test) {
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/single_module.coffee',
+      'test/expected/single_module.coffee',
+      'expected coffee template with single module');
+
+    test.done();
+
+  },
+  single_module_strict: function (test) {
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/single_module_strict.js',
+      'test/expected/single_module_strict.js',
+      'expected template with single strict module');
+
+    test.done();
+  },
+  single_quotes: function (test) {
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/single_quotes.js',
+      'test/expected/single_quotes.js',
+      'expected compiled template module');
+
+    test.done();
+  },
+  strict_mode: function (test) {
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/strict_mode.js',
+      'test/expected/strict_mode.js',
+      'expected strict mode in templates');
+
+    test.done();
+  },
+  template_path_in_comment: function (test) {
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/template_path_in_comment.js',
+      'test/expected/template_path_in_comment.js',
+      'expected template path in comment');
 
     test.done();
   }
