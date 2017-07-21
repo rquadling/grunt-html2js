@@ -94,98 +94,7 @@ exports.html2js = {
 
     test.done();
   },
-  bug_26_withCollapseWhitespaceFalseDefaultQuotes: function (test) {
-    test.expect(1);
-
-    assertFileContentsEqual(test, 'tmp/bug_26_withCollapseWhitespaceFalseDefaultQuotes.js',
-      'test/expected/bug_26_withCollapseWhitespaceFalseDefaultQuotes.js',
-      'expected bug 26 with whitespace collapse false and default quotes'
-    );
-
-    test.done();
-  },
-  bug_26_withCollapseWhitespaceFalseDoubleQuotes: function (test) {
-    test.expect(1);
-
-    assertFileContentsEqual(test, 'tmp/bug_26_withCollapseWhitespaceFalseDoubleQuotes.js',
-      'test/expected/bug_26_withCollapseWhitespaceFalseDoubleQuotes.js',
-      'expected bug 26 with whitespace collapse false and Double quotes'
-    );
-
-    test.done();
-  },
-  bug_26_withCollapseWhitespaceFalseSingleQuotes: function (test) {
-    test.expect(1);
-
-    assertFileContentsEqual(test, 'tmp/bug_26_withCollapseWhitespaceFalseSingleQuotes.js',
-      'test/expected/bug_26_withCollapseWhitespaceFalseSingleQuotes.js',
-      'expected bug 26 with whitespace collapse false and Single quotes'
-    );
-
-    test.done();
-  },
-  bug_26_withCollapseWhitespaceTrueDefaultQuotes: function (test) {
-    test.expect(1);
-
-    assertFileContentsEqual(test, 'tmp/bug_26_withCollapseWhitespaceTrueDefaultQuotes.js',
-      'test/expected/bug_26_withCollapseWhitespaceTrueDefaultQuotes.js',
-      'expected bug 26 with whitespace collapse true and default quotes'
-    );
-
-    test.done();
-  },
-  bug_26_withCollapseWhitespaceTrueDoubleQuotes: function (test) {
-    test.expect(1);
-
-    assertFileContentsEqual(test, 'tmp/bug_26_withCollapseWhitespaceTrueDoubleQuotes.js',
-      'test/expected/bug_26_withCollapseWhitespaceTrueDoubleQuotes.js',
-      'expected bug 26 with whitespace collapse true and Double quotes'
-    );
-
-    test.done();
-  },
-  bug_26_withCollapseWhitespaceTrueSingleQuotes: function (test) {
-    test.expect(1);
-
-    assertFileContentsEqual(test, 'tmp/bug_26_withCollapseWhitespaceTrueSingleQuotes.js',
-      'test/expected/bug_26_withCollapseWhitespaceTrueSingleQuotes.js',
-      'expected bug 26 with whitespace collapse true and Single quotes'
-    );
-
-    test.done();
-  },
-  bug_26_withoutCollapseWhitespaceDefaultQuotes: function (test) {
-    test.expect(1);
-
-    assertFileContentsEqual(test, 'tmp/bug_26_withoutCollapseWhitespaceDefaultQuotes.js',
-      'test/expected/bug_26_withoutCollapseWhitespaceDefaultQuotes.js',
-      'expected bug 26 without whitespace collapse and default quotes'
-    );
-
-    test.done();
-  },
-  bug_26_withoutCollapseWhitespaceDoubleQuotes: function (test) {
-    test.expect(1);
-
-    assertFileContentsEqual(test, 'tmp/bug_26_withoutCollapseWhitespaceDoubleQuotes.js',
-      'test/expected/bug_26_withoutCollapseWhitespaceDoubleQuotes.js',
-      'expected bug 26 without whitespace collapse and Double quotes'
-    );
-
-    test.done();
-  },
-  bug_26_withoutCollapseWhitespaceSingleQuotes: function (test) {
-    test.expect(1);
-
-    assertFileContentsEqual(test, 'tmp/bug_26_withoutCollapseWhitespaceSingleQuotes.js',
-      'test/expected/bug_26_withoutCollapseWhitespaceSingleQuotes.js',
-      'expected bug 26 without whitespace collapse and Single quotes'
-    );
-
-    test.done();
-  },
   coffee: function (test) {
-
     test.expect(1);
 
     assertFileContentsEqual(test, 'tmp/coffee.coffee',
@@ -355,6 +264,96 @@ exports.html2js = {
 
     test.done();
   },
+  issue_26_withCollapseWhitespaceFalseDefaultQuotes: function (test) {
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/issue_26_withCollapseWhitespaceFalseDefaultQuotes.js',
+      'test/expected/issue_26_withCollapseWhitespaceFalseDefaultQuotes.js',
+      'expected issue 26 with whitespace collapse false and default quotes'
+    );
+
+    test.done();
+  },
+  issue_26_withCollapseWhitespaceFalseDoubleQuotes: function (test) {
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/issue_26_withCollapseWhitespaceFalseDoubleQuotes.js',
+      'test/expected/issue_26_withCollapseWhitespaceFalseDoubleQuotes.js',
+      'expected issue 26 with whitespace collapse false and Double quotes'
+    );
+
+    test.done();
+  },
+  issue_26_withCollapseWhitespaceFalseSingleQuotes: function (test) {
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/issue_26_withCollapseWhitespaceFalseSingleQuotes.js',
+      'test/expected/issue_26_withCollapseWhitespaceFalseSingleQuotes.js',
+      'expected issue 26 with whitespace collapse false and Single quotes'
+    );
+
+    test.done();
+  },
+  issue_26_withCollapseWhitespaceTrueDefaultQuotes: function (test) {
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/issue_26_withCollapseWhitespaceTrueDefaultQuotes.js',
+      'test/expected/issue_26_withCollapseWhitespaceTrueDefaultQuotes.js',
+      'expected issue 26 with whitespace collapse true and default quotes'
+    );
+
+    test.done();
+  },
+  issue_26_withCollapseWhitespaceTrueDoubleQuotes: function (test) {
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/issue_26_withCollapseWhitespaceTrueDoubleQuotes.js',
+      'test/expected/issue_26_withCollapseWhitespaceTrueDoubleQuotes.js',
+      'expected issue 26 with whitespace collapse true and Double quotes'
+    );
+
+    test.done();
+  },
+  issue_26_withCollapseWhitespaceTrueSingleQuotes: function (test) {
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/issue_26_withCollapseWhitespaceTrueSingleQuotes.js',
+      'test/expected/issue_26_withCollapseWhitespaceTrueSingleQuotes.js',
+      'expected issue 26 with whitespace collapse true and Single quotes'
+    );
+
+    test.done();
+  },
+  issue_26_withoutCollapseWhitespaceDefaultQuotes: function (test) {
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/issue_26_withoutCollapseWhitespaceDefaultQuotes.js',
+      'test/expected/issue_26_withoutCollapseWhitespaceDefaultQuotes.js',
+      'expected issue 26 without whitespace collapse and default quotes'
+    );
+
+    test.done();
+  },
+  issue_26_withoutCollapseWhitespaceDoubleQuotes: function (test) {
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/issue_26_withoutCollapseWhitespaceDoubleQuotes.js',
+      'test/expected/issue_26_withoutCollapseWhitespaceDoubleQuotes.js',
+      'expected issue 26 without whitespace collapse and Double quotes'
+    );
+
+    test.done();
+  },
+  issue_26_withoutCollapseWhitespaceSingleQuotes: function (test) {
+    test.expect(1);
+
+    assertFileContentsEqual(test, 'tmp/issue_26_withoutCollapseWhitespaceSingleQuotes.js',
+      'test/expected/issue_26_withoutCollapseWhitespaceSingleQuotes.js',
+      'expected issue 26 without whitespace collapse and Single quotes'
+    );
+
+    test.done();
+  },
   module_as_function: function (test) {
     test.expect(1);
 
@@ -444,6 +443,7 @@ exports.html2js = {
   },
   process_pug_with_include: function (test) {
     test.expect(1);
+
     assertFileContentsEqual(test, 'tmp/process_pug_with_include.js',
       'test/expected/process_pug_with_include.js',
       'expected pug template to be processed with custom options');
