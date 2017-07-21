@@ -293,22 +293,27 @@ module.exports = function (grunt) {
         dest: 'tmp/issue_26_withoutCollapseWhitespaceSingleQuotes.js'
       },
       issue_76_missingSourceFile: {
+        nonull: true,
         src: 'test/fixtures/issue_76_missing.tpl.html',
         dest: 'tmp/issue_76_missingSourceFile.js'
       },
       issue_76_missingSourceFiles: {
+        nonull: true,
         src: ['test/fixtures/issue_76_missing_1.tpl.html', 'test/fixtures/issue_76_missing_2.tpl.html'],
         dest: 'tmp/issue_76_missingSourceFiles.js'
       },
       issue_76_missingSourceFilesFirst: {
+        nonull: true,
         src: ['test/fixtures/issue_76_missing_1.tpl.html', 'test/fixtures/one.tpl.html'],
         dest: 'tmp/issue_76_missingSourceFilesFirst.js'
       },
       issue_76_missingSourceFilesLast: {
+        nonull: true,
         src: ['test/fixtures/one.tpl.html', 'test/fixtures/issue_76_missing_1.tpl.html'],
         dest: 'tmp/issue_76_missingSourceFilesLast.js'
       },
       issue_76_missingSourceFilesMiddle: {
+        nonull: true,
         src: ['test/fixtures/one.tpl.html', 'test/fixtures/issue_76_missing_1.tpl.html', 'test/fixtures/two.tpl.html'],
         dest: 'tmp/issue_76_missingSourceFilesMiddle.js'
       },
