@@ -80,6 +80,82 @@ module.exports = function (grunt) {
         src: ['test/fixtures/broken_newlines.tpl.html'],
         dest: 'tmp/broken_newlines.js'
       },
+      bug_26_withCollapseWhitespaceFalseDefaultQuotes: {
+        options: {
+          htmlmin: {
+            collapseWhitespace: false
+          }
+        },
+        src: ['test/fixtures/bug_26.tpl.html'],
+        dest: 'tmp/bug_26_withCollapseWhitespaceFalseDefaultQuotes.js'
+      },
+      bug_26_withCollapseWhitespaceFalseDoubleQuotes: {
+        options: {
+          htmlmin: {
+            collapseWhitespace: false
+          },
+          quoteChar: '"'
+        },
+        src: ['test/fixtures/bug_26.tpl.html'],
+        dest: 'tmp/bug_26_withCollapseWhitespaceFalseDoubleQuotes.js'
+      },
+      bug_26_withCollapseWhitespaceFalseSingleQuotes: {
+        options: {
+          htmlmin: {
+            collapseWhitespace: false
+          },
+          quoteChar: '\''
+        },
+        src: ['test/fixtures/bug_26.tpl.html'],
+        dest: 'tmp/bug_26_withCollapseWhitespaceFalseSingleQuotes.js'
+      },
+      bug_26_withCollapseWhitespaceTrueDefaultQuotes: {
+        options: {
+          htmlmin: {
+            collapseWhitespace: false
+          }
+        },
+        src: ['test/fixtures/bug_26.tpl.html'],
+        dest: 'tmp/bug_26_withCollapseWhitespaceTrueDefaultQuotes.js'
+      },
+      bug_26_withCollapseWhitespaceTrueDoubleQuotes: {
+        options: {
+          htmlmin: {
+            collapseWhitespace: false
+          },
+          quoteChar: '"'
+        },
+        src: ['test/fixtures/bug_26.tpl.html'],
+        dest: 'tmp/bug_26_withCollapseWhitespaceTrueDoubleQuotes.js'
+      },
+      bug_26_withCollapseWhitespaceTrueSingleQuotes: {
+        options: {
+          htmlmin: {
+            collapseWhitespace: false
+          },
+          quoteChar: '\''
+        },
+        src: ['test/fixtures/bug_26.tpl.html'],
+        dest: 'tmp/bug_26_withCollapseWhitespaceTrueSingleQuotes.js'
+      },
+      bug_26_withoutCollapseWhitespaceDefaultQuotes: {
+        src: ['test/fixtures/bug_26.tpl.html'],
+        dest: 'tmp/bug_26_withoutCollapseWhitespaceDefaultQuotes.js'
+      },
+      bug_26_withoutCollapseWhitespaceDoubleQuotes: {
+        options: {
+          quoteChar: '"'
+        },
+        src: ['test/fixtures/bug_26.tpl.html'],
+        dest: 'tmp/bug_26_withoutCollapseWhitespaceDoubleQuotes.js'
+      },
+      bug_26_withoutCollapseWhitespaceSingleQuotes: {
+        options: {
+          quoteChar: '\''
+        },
+        src: ['test/fixtures/bug_26.tpl.html'],
+        dest: 'tmp/bug_26_withoutCollapseWhitespaceSingleQuotes.js'
+      },
       coffee: {
         options: {
           target: 'coffee'
