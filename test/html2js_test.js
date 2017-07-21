@@ -354,6 +354,31 @@ exports.html2js = {
 
     test.done();
   },
+  issue_76_missingSourceFile: function(test){
+    // @todo Not exactly sure what should go in here!
+    test.expect(0);
+    test.done();
+  },
+  issue_76_missingSourceFiles: function(test){
+    // @todo Not exactly sure what should go in here!
+    test.expect(0);
+    test.done();
+  },
+  issue_76_missingSourceFilesFirst: function(test){
+    // @todo Not exactly sure what should go in here!
+    test.expect(0);
+    test.done();
+  },
+  issue_76_missingSourceFilesLast: function(test){
+    // @todo Not exactly sure what should go in here!
+    test.expect(0);
+    test.done();
+  },
+  issue_76_missingSourceFilesMiddle: function(test){
+    // @todo Not exactly sure what should go in here!
+    test.expect(0);
+    test.done();
+  },
   module_as_function: function (test) {
     test.expect(1);
 
