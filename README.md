@@ -5,10 +5,9 @@
 [![NPM](https://img.shields.io/npm/dm/grunt-html2js.svg?style=plastic)](https://www.npmjs.com/package/grunt-html2js)
 [![NPM](https://img.shields.io/npm/dy/grunt-html2js.svg?style=plastic)](https://www.npmjs.com/package/grunt-html2js)
 [![NPM](https://img.shields.io/npm/dt/grunt-html2js.svg?style=plastic)](https://www.npmjs.com/package/grunt-html2js)
+[![Greenkeeper badge](https://badges.greenkeeper.io/rquadling/grunt-html2js.svg)](https://greenkeeper.io/)
 
 # grunt-html2js
-
-[![Greenkeeper badge](https://badges.greenkeeper.io/rquadling/grunt-html2js.svg)](https://greenkeeper.io/)
 
 Converts AngularJS templates to JavaScript
 
