@@ -29,13 +29,13 @@
     "test": "grunt test"
   },
   "devDependencies": {
-    "grunt": "~0.4.0",
-    "grunt-contrib-clean": "~0.4.0",
-    "grunt-contrib-jshint": "~0.1.1",
-    "grunt-contrib-nodeunit": "^0.3.3",
-    "grunt-conventional-changelog": "~1.0.0",
+    "grunt": "~1.0.1",
+    "grunt-contrib-clean": "~1.1.0",
+    "grunt-contrib-jshint": "~1.1.0",
+    "grunt-contrib-nodeunit": "^1.0.0",
+    "grunt-conventional-changelog": "~6.1.0",
     "grunt-coveralls": "^1.0.1",
-    "load-grunt-tasks": "~0.2.0"
+    "load-grunt-tasks": "~3.5.2"
   },
   "peerDependencies": {
     "grunt": ">=0.4.0"
@@ -47,7 +47,7 @@
     "gruntplugin"
   ],
   "dependencies": {
-    "chokidar": "^1.0.0",
-    "html-minifier": "~3.0.0"
+    "chokidar": "^2.0.0",
+    "html-minifier": "~3.5.8"
   }
 }
