@@ -8,6 +8,8 @@
 
 # grunt-html2js
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/rquadling/grunt-html2js.svg)](https://greenkeeper.io/)
+
 Converts AngularJS templates to JavaScript
 
 ## Getting Started
