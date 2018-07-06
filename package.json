@@ -47,7 +47,7 @@
     "gruntplugin"
   ],
   "dependencies": {
-    "chokidar": "^1.0.0",
-    "html-minifier": "~3.0.0"
+    "chokidar": "^2.0.0",
+    "html-minifier": "~3.5.0"
   }
 }
