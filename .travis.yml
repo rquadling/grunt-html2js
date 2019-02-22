@@ -6,7 +6,7 @@ node_js:
 install:
   - npm install
 before_script:
-  - npm install grunt-cli istanbul -g
+  - npm install grunt-cli istanbul
 script:
   - istanbul cover grunt test
   - grunt coveralls
