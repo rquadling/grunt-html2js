@@ -29,25 +29,25 @@
     "test": "grunt test"
   },
   "devDependencies": {
-    "grunt": "~0.4.0",
-    "grunt-contrib-clean": "~0.4.0",
-    "grunt-contrib-jshint": "~0.1.1",
-    "grunt-contrib-nodeunit": "^0.3.3",
-    "grunt-conventional-changelog": "~1.0.0",
-    "grunt-coveralls": "^1.0.1",
-    "load-grunt-tasks": "~0.2.0"
+    "grunt": "^1",
+    "grunt-contrib-clean": "^2",
+    "grunt-contrib-jshint": "^2",
+    "grunt-contrib-nodeunit": "^2",
+    "grunt-conventional-changelog": "^6",
+    "grunt-coveralls": "^2",
+    "load-grunt-tasks": "^4"
   },
   "peerDependencies": {
     "grunt": ">=0.4.0"
   },
   "optionalDependencies": {
-    "pug": "^2.0.0-beta6"
+    "pug": "^2"
   },
   "keywords": [
     "gruntplugin"
   ],
   "dependencies": {
-    "chokidar": "^2.0.0",
-    "html-minifier": "~3.5.0"
+    "chokidar": "^2",
+    "html-minifier": "^3"
   }
 }
