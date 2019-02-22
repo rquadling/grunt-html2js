@@ -11,7 +11,7 @@
 Converts AngularJS templates to JavaScript
 
 ## Getting Started
-This plugin requires Grunt `~0.4.0`
+This plugin requires Grunt v1 or later
 
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started)
 guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins.
@@ -376,3 +376,5 @@ As of 0.3.7, this package is now administered by Richard Quadling who gives a bi
       Reformatted code and README.md.
 
 0.5.1 Fix options.quoteChar usage for module header (#64)
+
+0.6.0 Upgraded dependencies to latest versions.`npm audit` shows 0 vulnerabilities.
