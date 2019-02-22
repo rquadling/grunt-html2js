@@ -14,5 +14,5 @@ install:
 before_script:
   - npm install grunt-cli istanbul
 script:
-  - ./node_modules/.bin/istanbul cover grunt test
+  - ./node_modules/.bin/istanbul cover ./node_modules/.bin/grunt test
   - ./node_modules/.bin/grunt coveralls
