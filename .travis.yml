@@ -1,8 +1,6 @@
 language: node_js
 sudo: false
 node_js:
-  - 6
-  - 7
   - 8
   - 9
   - 10
@@ -11,7 +9,6 @@ node_js:
   - 13
   - 14
   - 15
-  - 16
 install:
   - npm install
 before_script:
