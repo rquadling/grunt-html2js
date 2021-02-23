@@ -455,12 +455,6 @@ module.exports = function (grunt) {
     // Unit tests.
     nodeunit: {
       tests: ['test/*_test.js']
-    },
-
-    changelog: {
-      options: {
-        dest: 'CHANGELOG.md'
-      }
     }
   });
 

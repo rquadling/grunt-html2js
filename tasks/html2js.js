@@ -153,18 +153,8 @@ module.exports = function (grunt) {
 
     var counter = 0;
     var target = this.target;
-
-    if (options.watch) {
-      var files = this.files;
-      var fileCache = {};
-      var chokidar = require('chokidar');
-      var watcher = chokidar.watch().on('change', function (filepath) {
-        // invalidate cache
-        fileCache[filepath] = null;
-        // regenerateModules
-        files.forEach(generateModule);
-      });
-    }
+    var fileCache = {};
+    var watcher = null;
 
     // generate a separate module
     function generateModule (f) {
@@ -262,6 +252,18 @@ module.exports = function (grunt) {
         bundle += '\n\n';
       }
       grunt.file.write(f.dest, grunt.util.normalizelf(fileHeader + amdPrefix + bundle + modules + amdSuffix + fileFooter));
+    }
+
+    if (options.watch) {
+      var files = this.files;
+      var chokidar = require('chokidar');
+
+      watcher = chokidar.watch().on('change', function (filepath) {
+        // invalidate cache
+        fileCache[filepath] = null;
+        // regenerateModules
+        files.forEach(generateModule);
+      });
     }
 
     this.files.forEach(generateModule);

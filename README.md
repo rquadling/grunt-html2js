@@ -381,3 +381,5 @@ As of 0.3.7, this package is now administered by Richard Quadling who gives a bi
 
 0.7.0 Upgraded dependencies to latest versions.`npm audit` shows 0 vulnerabilities.
 
+0.8.0 Upgraded dependencies to latest versions.`npm audit` shows 0 vulnerabilities.
+
